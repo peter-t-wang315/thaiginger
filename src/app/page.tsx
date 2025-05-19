@@ -10,7 +10,9 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import gingerRoot from "../../public/ginger-root.png";
 import slice from "../../public/slice.png";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 
+gsap.registerPlugin(MotionPathPlugin);
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HomePage() {
@@ -19,37 +21,52 @@ export default function HomePage() {
 
   useEffect(() => {
     const ginger = gingerRef.current;
+    const vh = window.innerHeight;
+    const randomRotation = gsap.utils.random(360, 1080);
     if (!ginger) return;
 
-    // const totalHeight = document.body.scrollHeight + document.body.scrollHeight/2;
-    const totalHeight =
-      document.body.scrollHeight + document.body.scrollHeight * 2;
+    const motionPaths = [
+      [
+        { x: 100, y: vh * 0.2 },
+        { x: 200, y: vh * 1.5 },
+        { x: 300, y: vh * 3 },
+      ],
+      [
+        { x: 200, y: vh * 0.2 },
+        { x: 50, y: vh * 1.5 },
+        { x: 100, y: vh * 3 },
+      ],
+      [
+        { x: 25, y: vh * 0.2 },
+        { x: 175, y: vh * 1.5 },
+        { x: 340, y: vh * 3 },
+      ],
+      [
+        { x: 150, y: vh * 0.2 },
+        { x: 400, y: vh * 1.5 },
+        { x: 225, y: vh * 3 },
+      ],
+    ];
 
     slicesRef.current.forEach((slice, i) => {
       if (!slice) return;
 
       gsap.to(slice, {
-        y: totalHeight,
-        opacity: 1,
-        ease: "none",
-        // rotation: `random(-45, 45)`,
-        scrollTrigger: {
-          trigger: ginger,
-          start: `top+=${i * 100} center`,
-          end: `bottom+=${totalHeight} top`,
-          scrub: 0.5,
-          onUpdate: (self) => {
-            // Add some oscillation to the x position for swaying effect
-            const progress = self.progress;
-            const swayAmount = 20 * Math.sin(progress * 10);
-            // Parse the current x position as a number
-            const currentX = parseFloat(gsap.getProperty(slice, "x") as string);
-            gsap.set(slice, {
-              x: currentX + swayAmount * (i % 2 ? 1 : -1) * 0.05,
-            });
-          },
+        ease: "power1.inOut",
+        motionPath: {
+          path: motionPaths[i],
+          align: "self",
+          autoRotate: true,
+          alignOrigin: [0.5, 0.5],
         },
-        // x: 800, // move right
+        rotation: randomRotation,
+        scrollTrigger: {
+          trigger: document.body,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+          markers: true,
+        },
       });
     });
   }, []);
