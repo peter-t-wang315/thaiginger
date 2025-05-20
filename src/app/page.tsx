@@ -22,27 +22,26 @@ export default function HomePage() {
   useEffect(() => {
     const ginger = gingerRef.current;
     const vh = window.innerHeight;
-    const randomRotation = gsap.utils.random(360, 1080);
     if (!ginger) return;
 
     const motionPaths = [
       [
-        { x: 100, y: vh * 0.2 },
+        { x: 100, y: vh * 0.5 },
         { x: 200, y: vh * 1.5 },
         { x: 300, y: vh * 3 },
       ],
       [
-        { x: 200, y: vh * 0.2 },
+        { x: 200, y: vh * 0.5 },
         { x: 50, y: vh * 1.5 },
         { x: 100, y: vh * 3 },
       ],
       [
-        { x: 25, y: vh * 0.2 },
+        { x: 25, y: vh * 0.5 },
         { x: 175, y: vh * 1.5 },
         { x: 340, y: vh * 3 },
       ],
       [
-        { x: 150, y: vh * 0.2 },
+        { x: 150, y: vh * 0.5 },
         { x: 400, y: vh * 1.5 },
         { x: 225, y: vh * 3 },
       ],
@@ -56,10 +55,9 @@ export default function HomePage() {
         motionPath: {
           path: motionPaths[i],
           align: "self",
-          autoRotate: true,
           alignOrigin: [0.5, 0.5],
         },
-        rotation: randomRotation,
+        rotation: gsap.utils.random(-1080, 1080),
         scrollTrigger: {
           trigger: document.body,
           start: "top top",
