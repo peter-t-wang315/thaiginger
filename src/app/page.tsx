@@ -11,9 +11,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import gingerRoot from "../../public/ginger-root.png";
 import slice from "../../public/slice.png";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { MotionPathHelper } from "gsap/MotionPathHelper";
 
-gsap.registerPlugin(MotionPathPlugin);
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, MotionPathHelper);
 
 export default function HomePage() {
   const gingerRef = useRef<HTMLDivElement>(null);
@@ -47,26 +47,94 @@ export default function HomePage() {
       ],
     ];
 
-    slicesRef.current.forEach((slice, i) => {
-      if (!slice) return;
+    MotionPathHelper.create("#thePath");
 
-      gsap.to(slice, {
-        ease: "power1.inOut",
-        motionPath: {
-          path: motionPaths[i],
-          align: "self",
-          alignOrigin: [0.5, 0.5],
-        },
-        rotation: gsap.utils.random(-1080, 1080),
+    // slicesRef.current.forEach((slice, i) => {
+    //   if (!slice) return;
+
+    //   gsap.to(slice, {
+    //   ease: "power1.inOut",
+    //   motionPath: {
+    //     path: motionPaths[i],
+    //     align: "self",
+    //     alignOrigin: [0.5, 0.5],
+    //   },
+    //   rotation: gsap.utils.random(-1080, 1080),
+    //   scrollTrigger: {
+    //     trigger: document.body,
+    //     start: "top top",
+    //     end: "bottom bottom",
+    //     scrub: true,
+    //     markers: true,
+    //   },
+    // });
+    // });
+
+    const what =
+      "M206,-2747 C206,-2719.1 -126.098,-515.799 -164.655,-54.225 -168.939,-2.94 -89.6,70.3 -88,72 -77.6,81.75 -58.386,119.654 -6.899,124.694 20.824,127.407 89.15,100 100,100 ";
+
+    const tl = gsap
+      .timeline({
         scrollTrigger: {
           trigger: document.body,
           start: "top top",
-          end: "bottom bottom",
+          end: "bottom center",
           scrub: true,
           markers: true,
         },
-      });
-    });
+      })
+      .to(
+        slicesRef.current[0],
+        {
+          ease: "power1.inOut",
+          motionPath: {
+            path: what,
+            align: "self",
+            alignOrigin: [0.5, 0.5],
+          },
+          rotation: gsap.utils.random(-1080, 1080),
+        },
+        0
+      )
+      .to(
+        slicesRef.current[1],
+        {
+          ease: "power1.inOut",
+          motionPath: {
+            path: motionPaths[1],
+            align: "self",
+            alignOrigin: [0.5, 0.5],
+          },
+          rotation: gsap.utils.random(-1080, 1080),
+        },
+        0
+      )
+      .to(
+        slicesRef.current[2],
+        {
+          ease: "power1.inOut",
+          motionPath: {
+            path: motionPaths[2],
+            align: "self",
+            alignOrigin: [0.5, 0.5],
+          },
+          rotation: gsap.utils.random(-1080, 1080),
+        },
+        0
+      )
+      .to(
+        slicesRef.current[3],
+        {
+          ease: "power1.inOut",
+          motionPath: {
+            path: motionPaths[3],
+            align: "self",
+            alignOrigin: [0.5, 0.5],
+          },
+          rotation: gsap.utils.random(-1080, 1080),
+        },
+        0
+      );
   }, []);
 
   return (
@@ -142,6 +210,16 @@ export default function HomePage() {
           </CardContent>
         </Card>
       </section>
+
+      <svg width="100%" height="600" viewBox="0 0 600 600" id="svg">
+        <path
+          id="thePath"
+          d="M100,100 C200,300 400,300 500,100"
+          stroke="black"
+          fill="none"
+          strokeWidth="2"
+        />
+      </svg>
     </main>
   );
 }
