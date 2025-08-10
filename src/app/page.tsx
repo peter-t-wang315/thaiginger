@@ -47,7 +47,7 @@ export default function HomePage() {
       ],
     ];
 
-    MotionPathHelper.create("#thePath");
+    MotionPathHelper.create("#slice1");
 
     // slicesRef.current.forEach((slice, i) => {
     //   if (!slice) return;
@@ -78,7 +78,7 @@ export default function HomePage() {
         scrollTrigger: {
           trigger: document.body,
           start: "top top",
-          end: "bottom center",
+          end: "bottom bottom",
           scrub: true,
           markers: true,
         },
@@ -154,6 +154,7 @@ export default function HomePage() {
             />
             {[slice, slice, slice, slice].map((src, i) => (
               <Image
+                id={`slice${i}`}
                 key={i}
                 src={src}
                 alt={`Ginger Slice ${i + 1}`}
@@ -168,6 +169,8 @@ export default function HomePage() {
           </div>
         </Card>
       </section>
+
+      <div className="h-[500px]">what</div>
 
       <section className="min-h-screen px-8 py-24 bg-orange-50 flex flex-col justify-center items-center text-center">
         <Card className="p-6 max-w-xl">
@@ -210,16 +213,6 @@ export default function HomePage() {
           </CardContent>
         </Card>
       </section>
-
-      <svg width="100%" height="600" viewBox="0 0 600 600" id="svg">
-        <path
-          id="thePath"
-          d="M100,100 C200,300 400,300 500,100"
-          stroke="black"
-          fill="none"
-          strokeWidth="2"
-        />
-      </svg>
     </main>
   );
 }
