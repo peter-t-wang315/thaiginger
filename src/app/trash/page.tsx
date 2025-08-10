@@ -10,8 +10,10 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import gingerRoot from "../../../public/ginger-root.png";
 import slice from "../../../public/slice.png";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { MotionPathHelper } from "gsap/MotionPathHelper";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, MotionPathHelper);
 
 export default function HomePage() {
   const gingerRef = useRef<HTMLDivElement>(null);
@@ -19,43 +21,124 @@ export default function HomePage() {
 
   useEffect(() => {
     const ginger = gingerRef.current;
+    const vh = window.innerHeight;
     if (!ginger) return;
 
-    // const totalHeight = document.body.scrollHeight + document.body.scrollHeight/2;
-    const totalHeight =
-      document.body.scrollHeight + document.body.scrollHeight * 2;
+    const motionPaths = [
+      [
+        { x: 100, y: vh * 0.5 },
+        { x: 200, y: vh * 1.5 },
+        { x: 300, y: vh * 3 },
+      ],
+      [
+        { x: 200, y: vh * 0.5 },
+        { x: 50, y: vh * 1.5 },
+        { x: 100, y: vh * 3 },
+      ],
+      [
+        { x: 25, y: vh * 0.5 },
+        { x: 175, y: vh * 1.5 },
+        { x: 340, y: vh * 3 },
+      ],
+      [
+        { x: 150, y: vh * 0.5 },
+        { x: 400, y: vh * 1.5 },
+        { x: 225, y: vh * 3 },
+      ],
+    ];
 
-    slicesRef.current.forEach((slice, i) => {
-      if (!slice) return;
+    MotionPathHelper.create("#slice1");
 
-      gsap.to(slice, {
-        y: totalHeight,
-        opacity: 1,
-        ease: "none",
-        // rotation: `random(-45, 45)`,
+    // slicesRef.current.forEach((slice, i) => {
+    //   if (!slice) return;
+
+    //   gsap.to(slice, {
+    //   ease: "power1.inOut",
+    //   motionPath: {
+    //     path: motionPaths[i],
+    //     align: "self",
+    //     alignOrigin: [0.5, 0.5],
+    //   },
+    //   rotation: gsap.utils.random(-1080, 1080),
+    //   scrollTrigger: {
+    //     trigger: document.body,
+    //     start: "top top",
+    //     end: "bottom bottom",
+    //     scrub: true,
+    //     markers: true,
+    //   },
+    // });
+    // });
+
+    const what =
+      "M206,-2747 C206,-2719.1 -126.098,-515.799 -164.655,-54.225 -168.939,-2.94 -89.6,70.3 -88,72 -77.6,81.75 -58.386,119.654 -6.899,124.694 20.824,127.407 89.15,100 100,100 ";
+
+    const tl = gsap
+      .timeline({
         scrollTrigger: {
-          trigger: ginger,
-          start: `top+=${i * 100} center`,
-          end: `bottom+=${totalHeight} top`,
-          scrub: 0.5,
-          onUpdate: (self) => {
-            // Add some oscillation to the x position for swaying effect
-            const progress = self.progress;
-            const swayAmount = 20 * Math.sin(progress * 10);
-            // Parse the current x position as a number
-            const currentX = parseFloat(gsap.getProperty(slice, "x") as string);
-            gsap.set(slice, {
-              x: currentX + swayAmount * (i % 2 ? 1 : -1) * 0.05,
-            });
-          },
+          trigger: document.body,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+          markers: true,
         },
-        // x: 800, // move right
-      });
-    });
+      })
+      .to(
+        slicesRef.current[0],
+        {
+          ease: "power1.inOut",
+          motionPath: {
+            path: what,
+            align: "self",
+            alignOrigin: [0.5, 0.5],
+          },
+          rotation: gsap.utils.random(-1080, 1080),
+        },
+        0
+      )
+      .to(
+        slicesRef.current[1],
+        {
+          ease: "power1.inOut",
+          motionPath: {
+            path: motionPaths[1],
+            align: "self",
+            alignOrigin: [0.5, 0.5],
+          },
+          rotation: gsap.utils.random(-1080, 1080),
+        },
+        0
+      )
+      .to(
+        slicesRef.current[2],
+        {
+          ease: "power1.inOut",
+          motionPath: {
+            path: motionPaths[2],
+            align: "self",
+            alignOrigin: [0.5, 0.5],
+          },
+          rotation: gsap.utils.random(-1080, 1080),
+        },
+        0
+      )
+      .to(
+        slicesRef.current[3],
+        {
+          ease: "power1.inOut",
+          motionPath: {
+            path: motionPaths[3],
+            align: "self",
+            alignOrigin: [0.5, 0.5],
+          },
+          rotation: gsap.utils.random(-1080, 1080),
+        },
+        0
+      );
   }, []);
 
   return (
-    <main className="relative min-h-[300vh] bg-white font-sans text-gray-800 overflow-hidden">
+    <main className="bg-yellow-500 font-sans text-gray-800 overflow-hidden">
       <section className="h-screen flex flex-col items-center justify-center relative z-10">
         <Card className="p-6 text-center">
           <h1 className="text-5xl font-bold mb-4">Welcome to Thai Ginger</h1>
@@ -71,6 +154,7 @@ export default function HomePage() {
             />
             {[slice, slice, slice, slice].map((src, i) => (
               <Image
+                id={`slice${i}`}
                 key={i}
                 src={src}
                 alt={`Ginger Slice ${i + 1}`}
@@ -85,6 +169,8 @@ export default function HomePage() {
           </div>
         </Card>
       </section>
+
+      <div className="h-[500px]">what</div>
 
       <section className="min-h-screen px-8 py-24 bg-orange-50 flex flex-col justify-center items-center text-center">
         <Card className="p-6 max-w-xl">
