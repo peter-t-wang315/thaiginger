@@ -44,8 +44,14 @@
 }
 
 :root {
+  --background: #faf8f5;
+  --primary-red: #c44536;
+  --dark-red: #a33a2c;
+  --light-red: #e8b1aa;
+  --primary-gold: #b8956a;
+  --dark-gold: #9e7e59;
+  --light-gold: #e4d4be;
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
