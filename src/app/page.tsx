@@ -16,9 +16,10 @@ export default function HomePage() {
   return (
     <main className="flex flex-col flex-1">
       <div className="flex min-h-screen items-center justify-center">
-        <div>
+        <div className="flex flex-col items-center justify-center space-y-8">
           {/* TODO: These colors ain't workin bruh */}
-          <h1 className="text-9xl font-herculanum">THAI GINGER</h1>
+          <h1 className="text-9xl">THAI GINGER</h1>
+          <h1 className="text-9xl font-thai">ขิงไทย</h1>
         </div>
       </div>
     </main>
