@@ -17,9 +17,19 @@ export default function HomePage() {
     <main className="flex flex-col flex-1">
       <div className="flex min-h-screen items-center justify-center">
         <div className="flex flex-col items-center justify-center space-y-8">
-          {/* TODO: These colors ain't workin bruh */}
-          <h1 className="text-9xl">THAI GINGER</h1>
-          <h1 className="text-9xl font-thai">ขิงไทย</h1>
+          <h1 className="text-9xl text-primary">THAI GINGER</h1>
+          <h1 className="text-8xl font-thai text-primary">ขิงไทย</h1>
+          <Image
+            src={gingerRoot}
+            alt="Ginger Root"
+            width={400}
+            height={400}
+            className="-mt-10"
+          />
+          <div className="flex w-[80%] justify-between">
+            <h2>Menu</h2>
+            <h2>Call</h2>
+          </div>
         </div>
       </div>
     </main>

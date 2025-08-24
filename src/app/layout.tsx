@@ -13,6 +13,7 @@ const notoThai = Noto_Sans_Thai({
   subsets: ["thai"], // ✅ makes sure Thai glyphs are included
   weight: ["400", "700"], // pick the ones you need
   variable: "--font-thai",
+  display: "block", // prevent fallback rendering
 });
 
 export const metadata: Metadata = {
