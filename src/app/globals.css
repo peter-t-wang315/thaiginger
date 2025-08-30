@@ -88,12 +88,29 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-h2 {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  font-weight: 700;
-  color: var(--color-secondary);
-  font-family: var(--font-herculanum);
+/* Styling to make hovering on the Link buttons have a nice animation */
+.underline-swipe {
+  position: relative;
+  overflow: hidden;
+}
+.underline-swipe::after {
+  content: "";
+  position: absolute;
+  left: 11px;
+  bottom: 0;
+  width: 80%;
+  height: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.underline-swipe-right::after {
+  transform-origin: right;
+}
+.underline-swipe:hover::after,
+.underline-swipe:focus::after {
+  transform: scaleX(1);
 }
 
 @layer base {
