@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-import gingerRoot from "../../../public/ginger-root.png";
+import gingerRoot from "../../../public/temp-ginger-root.png";
 import slice from "../../../public/slice.png";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { MotionPathHelper } from "gsap/MotionPathHelper";
