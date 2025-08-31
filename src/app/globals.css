@@ -88,6 +88,13 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+h3 {
+  text-align: center;
+  font-family: var(--font-herculanum);
+  color: var(--color-secondary);
+  font-size: 1.25rem;
+}
+
 /* Styling to make hovering on the Link buttons have a nice animation */
 .underline-swipe {
   position: relative;
@@ -108,8 +115,7 @@
 .underline-swipe-right::after {
   transform-origin: right;
 }
-.underline-swipe:hover::after,
-.underline-swipe:focus::after {
+.underline-swipe:hover::after {
   transform: scaleX(1);
 }
 
@@ -119,6 +125,6 @@
   }
   body {
     @apply bg-background;
-    letter-spacing: 0.75em;
+    letter-spacing: 0.2em;
   }
 }

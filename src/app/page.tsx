@@ -15,8 +15,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HomePage() {
   return (
     <main className="flex flex-col flex-1">
-      <div className="flex flex-col min-h-screen items-center justify-center">
-        <div className="flex flex-col items-center justify-center space-y-8">
+      <div className="flex flex-col min-h-screen items-center justify-between">
+        <div className="flex flex-col items-center justify-center space-y-8 flex-1 tracking-[.75em]">
           <h1 className="text-9xl text-primary">THAI GINGER</h1>
           <h1 className="text-8xl font-thai text-primary">ขิงไทย</h1>
           <Image
@@ -33,7 +33,7 @@ export default function HomePage() {
             </Button>
           </div>
         </div>
-        <div className="justify-self-end">
+        <div className="pb-10">
           <h3>Tuesday - Sunday</h3>
           <h3>11AM - 9PM</h3>
         </div>
