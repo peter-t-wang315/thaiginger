@@ -9,14 +9,52 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import gingerRoot from "../../public/temp-ginger-root.png";
 import slice from "../../public/slice.png";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HomePage() {
+  const landingSectionRef = useRef<HTMLDivElement>(null);
+  const bodySectionRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const callButtonRef = useRef<HTMLButtonElement>(null);
+
+  useGSAP(() => {
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: landingSectionRef.current,
+          start: "55% center",
+          end: "bottom 20%",
+          scrub: true,
+          markers: true,
+        },
+      })
+      .to(menuButtonRef.current, {
+        ease: "power1.inOut",
+        x: "-80%",
+      });
+
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: bodySectionRef.current,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true,
+          markers: true,
+          pin: true,
+        },
+      })
+      .to(menuButtonRef.current, {});
+  }, []);
+
   return (
     <main className="flex flex-col flex-1">
       <div className="flex flex-col min-h-screen items-center justify-between px-4">
+        {/* Title page */}
         <div
+          ref={landingSectionRef}
           className="flex flex-col items-center justify-center space-y-6 flex-1
              tracking-[.5em] md:tracking-[.75em] text-center"
         >
@@ -34,12 +72,17 @@ export default function HomePage() {
             className="my-[32px] w-[50%]  h-auto"
           />
           <div className="flex flex-row w-[80%] justify-between gap-4 sm:gap-0 mt-6">
-            <Button variant="link" className="text-2xl md:text-3xl lg:text-4xl">
+            <Button
+              variant="link"
+              className="text-2xl md:text-3xl lg:text-4xl"
+              ref={menuButtonRef}
+            >
               Menu
             </Button>
             <Button
               variant="link"
               className="underline-swipe-right text-2xl md:text-3xl lg:text-4xl"
+              ref={callButtonRef}
             >
               Call
             </Button>
@@ -50,7 +93,9 @@ export default function HomePage() {
           <h3>11AM - 9PM</h3>
         </div>
       </div>
-      <div className="flex min-h-screen"></div>
+
+      {/* Main body content */}
+      <div ref={bodySectionRef} className="flex min-h-[250vh]"></div>
     </main>
   );
 }
