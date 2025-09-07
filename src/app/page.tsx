@@ -20,6 +20,8 @@ export default function HomePage() {
   const callButtonRef = useRef<HTMLButtonElement>(null);
 
   useGSAP(() => {
+    gsap.set(menuButtonRef.current, { x: 0 });
+
     gsap
       .timeline({
         scrollTrigger: {
@@ -32,21 +34,20 @@ export default function HomePage() {
       })
       .to(menuButtonRef.current, {
         ease: "power1.inOut",
-        x: "-80%",
+        x: "-95%",
       });
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: bodySectionRef.current,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-          markers: true,
-          pin: true,
-        },
-      })
-      .to(menuButtonRef.current, {});
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: menuButtonRef.current,
+        start: "top center",
+        endTrigger: bodySectionRef.current,
+        end: "bottom bottom",
+        scrub: true,
+        pin: true,
+        markers: true,
+      },
+    });
   }, []);
 
   return (
