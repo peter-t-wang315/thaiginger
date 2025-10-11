@@ -10,8 +10,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import gingerRoot from "../../public/temp-ginger-root.png";
 import slice from "../../public/slice.png";
 import { useGSAP } from "@gsap/react";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { MotionPathHelper } from "gsap/MotionPathHelper";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, MotionPathHelper);
 
 export default function HomePage() {
   const landingSectionRef = useRef<HTMLDivElement>(null);
@@ -20,33 +23,54 @@ export default function HomePage() {
   const callButtonRef = useRef<HTMLButtonElement>(null);
 
   useGSAP(() => {
-    gsap.set(menuButtonRef.current, { x: 0 });
+    // gsap
+    //   .timeline({
+    //     scrollTrigger: {
+    //       trigger: landingSectionRef.current,
+    //       start: "55% center",
+    //       end: "bottom 20%",
+    //       scrub: true,
+    //       markers: true,
+    //     },
+    //   })
+    //   .to(menuButtonRef.current, {
+    //     ease: "power1.inOut",
+    //     x: "-95%",
+    //   });
 
-    gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: landingSectionRef.current,
-          start: "55% center",
-          end: "bottom 20%",
-          scrub: true,
-          markers: true,
-        },
-      })
-      .to(menuButtonRef.current, {
-        ease: "power1.inOut",
-        x: "-95%",
-      });
+    // gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: menuButtonRef.current,
+    //     start: "top center",
+    //     endTrigger: bodySectionRef.current,
+    //     end: "bottom bottom",
+    //     scrub: true,
+    //     pin: true,
+    //     markers: true,
+    //   },
+    // });
+    const totalScroll = document.body.scrollHeight - window.innerHeight;
 
-    gsap.timeline({
+    gsap.set(menuButtonRef.current, { x: 0, y: 0 });
+
+    gsap.to(menuButtonRef.current, {
       scrollTrigger: {
-        trigger: menuButtonRef.current,
-        start: "top center",
+        trigger: landingSectionRef.current,
+        start: "top top",
         endTrigger: bodySectionRef.current,
         end: "bottom bottom",
         scrub: true,
-        pin: true,
         markers: true,
       },
+      motionPath: {
+        path: [
+          { x: "-90%", y: 0 },
+          { x: "-90%", y: totalScroll }, // Move straight down the middle
+        ],
+        align: "self",
+        autoRotate: false,
+      },
+      ease: "linear",
     });
   }, []);
 
