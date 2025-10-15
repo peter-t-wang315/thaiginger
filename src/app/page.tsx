@@ -22,57 +22,57 @@ export default function HomePage() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const callButtonRef = useRef<HTMLButtonElement>(null);
 
-  useGSAP(() => {
-    // gsap
-    //   .timeline({
-    //     scrollTrigger: {
-    //       trigger: landingSectionRef.current,
-    //       start: "55% center",
-    //       end: "bottom 20%",
-    //       scrub: true,
-    //       markers: true,
-    //     },
-    //   })
-    //   .to(menuButtonRef.current, {
-    //     ease: "power1.inOut",
-    //     x: "-95%",
-    //   });
+  // useGSAP(() => {
+  //   // gsap
+  //   //   .timeline({
+  //   //     scrollTrigger: {
+  //   //       trigger: landingSectionRef.current,
+  //   //       start: "55% center",
+  //   //       end: "bottom 20%",
+  //   //       scrub: true,
+  //   //       markers: true,
+  //   //     },
+  //   //   })
+  //   //   .to(menuButtonRef.current, {
+  //   //     ease: "power1.inOut",
+  //   //     x: "-95%",
+  //   //   });
 
-    // gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: menuButtonRef.current,
-    //     start: "top center",
-    //     endTrigger: bodySectionRef.current,
-    //     end: "bottom bottom",
-    //     scrub: true,
-    //     pin: true,
-    //     markers: true,
-    //   },
-    // });
-    const totalScroll = document.body.scrollHeight - window.innerHeight;
+  //   // gsap.timeline({
+  //   //   scrollTrigger: {
+  //   //     trigger: menuButtonRef.current,
+  //   //     start: "top center",
+  //   //     endTrigger: bodySectionRef.current,
+  //   //     end: "bottom bottom",
+  //   //     scrub: true,
+  //   //     pin: true,
+  //   //     markers: true,
+  //   //   },
+  //   // });
+  //   const totalScroll = document.body.scrollHeight - window.innerHeight;
 
-    gsap.set(menuButtonRef.current, { x: 0, y: 0 });
+  //   gsap.set(menuButtonRef.current, { x: 0, y: 0 });
 
-    gsap.to(menuButtonRef.current, {
-      scrollTrigger: {
-        trigger: landingSectionRef.current,
-        start: "top top",
-        endTrigger: bodySectionRef.current,
-        end: "bottom bottom",
-        scrub: true,
-        markers: true,
-      },
-      motionPath: {
-        path: [
-          { x: "-90%", y: 0 },
-          { x: "-90%", y: totalScroll }, // Move straight down the middle
-        ],
-        align: "self",
-        autoRotate: false,
-      },
-      ease: "linear",
-    });
-  }, []);
+  //   gsap.to(menuButtonRef.current, {
+  //     scrollTrigger: {
+  //       trigger: landingSectionRef.current,
+  //       start: "top top",
+  //       endTrigger: bodySectionRef.current,
+  //       end: "bottom bottom",
+  //       scrub: true,
+  //       markers: true,
+  //     },
+  //     motionPath: {
+  //       path: [
+  //         { x: "-90%", y: 0 },
+  //         { x: "-90%", y: totalScroll }, // Move straight down the middle
+  //       ],
+  //       align: "self",
+  //       autoRotate: false,
+  //     },
+  //     ease: "linear",
+  //   });
+  // }, []);
 
   return (
     <main className="flex flex-col flex-1">
@@ -120,7 +120,27 @@ export default function HomePage() {
       </div>
 
       {/* Main body content */}
-      <div ref={bodySectionRef} className="flex min-h-[250vh]"></div>
+      <div ref={bodySectionRef} className="flex flex-col space-y-10">
+        <div className="">
+          <p className="bg-primary-dark text-white">
+            FROM THE ROLLING HILLS OF NORTHERN THAILAND,
+            <br />
+            TO THE ROLLING WHEAT FIELDS OF PULLMAN
+          </p>
+          <p>
+            FOR 11+ YEARS THAI GINGER BRINGS
+            <br />
+            AUTHENTIC THAI CUISINE TO THE PALOUSE
+          </p>
+        </div>
+        <Image
+          src="/HomePictures/fillerpic.png"
+          alt="Piccccc"
+          width={400}
+          height={400}
+          className="mx-auto"
+        />
+      </div>
     </main>
   );
 }
