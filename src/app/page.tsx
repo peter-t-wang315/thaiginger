@@ -121,7 +121,7 @@ export default function HomePage() {
 
       {/* Main body content */}
       <div ref={bodySectionRef} className="flex flex-col space-y-10">
-        <div className="">
+        <div className="relative ">
           <p className="bg-primary-dark text-white">
             FROM THE ROLLING HILLS OF NORTHERN THAILAND,
             <br />
@@ -132,6 +132,13 @@ export default function HomePage() {
             <br />
             AUTHENTIC THAI CUISINE TO THE PALOUSE
           </p>
+          <Image
+            src="/HomePictures/thaiGingerOutside.png"
+            alt="Thai Ginger Outside"
+            objectFit="cover"
+            fill
+            className="w-full h-full top-0 left-0 object-cover "
+          />
         </div>
         <Image
           src="/HomePictures/fillerpic.png"
