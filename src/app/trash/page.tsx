@@ -60,48 +60,44 @@ export default function HomePage() {
       {/* ─── BODY ────────────────────────────────────────────────────────── */}
       <div ref={bodySectionRef} className="flex flex-col items-center">
         {/* ── Section 1: Exterior photo + overlapping banners ── */}
-        <section className="relative w-full flex justify-center py-40">
-          {/*
-            Outer container is wider than the photo so banners
-            can overflow left/right without clipping.
-          */}
-          <div className="relative w-[72%] max-w-[600px] flex justify-center">
-            {/* Photo — centered within outer container, ~75% of outer width */}
-            <div className="relative w-[75%] aspect-[4/3] overflow-hidden shadow-md self-center">
+        <section className="relative w-full flex justify-center py-40 px-8 sm:px-0">
+          <div className="relative w-[90%] max-w-[700px] flex justify-center">
+            <div className="relative w-[100%] self-center shadow-md">
               <Image
                 src="/HomePictures/thaiGingerOutside.png"
                 alt="Thai Ginger Outside"
-                fill
-                className="object-cover"
+                width={800}
+                height={600}
+                className="w-full h-auto"
               />
-            </div>
 
-            {/* Top-left red banner — anchored to top-left of outer container */}
-            <div
-              className="absolute top-[6%] left-0 z-10
-                          bg-[#b84c38] text-white
-                          px-4 py-2.5
-                          text-[8px] sm:text-[9px] md:text-[10px]
-                          tracking-[.15em] font-semibold leading-relaxed
-                          shadow-sm"
-            >
-              FROM THE ROLLING HILLS OF NORTHERN THAILAND,
-              <br />
-              TO THE ROLLING WHEAT FIELDS OF PULLMAN
-            </div>
+              {/* Top-left red banner */}
+              <div
+                className="absolute top-0 -left-0 sm:-top-[8%] sm:-left-[8%] z-10
+                    bg-[#b84c38] text-white
+                    px-3 py-2 sm:px-5 sm:py-3
+                    text-[9px] sm:text-[11px] md:text-sm
+                    tracking-[.15em] font-semibold leading-relaxed
+                    shadow-sm"
+              >
+                FROM THE ROLLING HILLS OF NORTHERN THAILAND,
+                <br />
+                TO THE ROLLING WHEAT FIELDS OF PULLMAN
+              </div>
 
-            {/* Bottom-right tan banner — anchored to bottom-right */}
-            <div
-              className="absolute bottom-[6%] right-0 z-10
-                          bg-[#c9a055] text-white
-                          px-4 py-2.5
-                          text-[8px] sm:text-[9px] md:text-[10px]
-                          tracking-[.15em] font-semibold leading-relaxed
-                          text-right shadow-sm"
-            >
-              FOR 11+ YEARS THAI GINGER BRINGS
-              <br />
-              AUTHENTIC THAI CUISINE TO THE PALOUSE
+              {/* Bottom-right tan banner */}
+              <div
+                className="absolute bottom-0 -right-0 sm:-bottom-[8%] sm:-right-[8%] z-10
+                    bg-[#c9a055] text-white
+                    px-3 py-2 sm:px-5 sm:py-3
+                    text-[9px] sm:text-[11px] md:text-sm
+                    tracking-[.15em] font-semibold leading-relaxed
+                    text-right shadow-sm"
+              >
+                FOR 11+ YEARS THAI GINGER BRINGS
+                <br />
+                AUTHENTIC THAI CUISINE TO THE PALOUSE
+              </div>
             </div>
           </div>
         </section>
