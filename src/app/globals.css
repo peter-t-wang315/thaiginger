@@ -94,6 +94,10 @@ h3 {
   color: var(--color-secondary);
 }
 
+p {
+  font-family: var(--font-herculanum);
+}
+
 /* Styling to make hovering on the Link buttons have a nice animation */
 .underline-swipe {
   position: relative;
