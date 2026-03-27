@@ -60,7 +60,7 @@ export default function HomePage() {
       {/* ─── BODY ────────────────────────────────────────────────────────── */}
       <div ref={bodySectionRef} className="flex flex-col items-center">
         {/* ── Section 1: Exterior photo + overlapping banners ── */}
-        <section className="relative w-full flex justify-center py-40 px-8 sm:px-0">
+        <section className="relative w-full flex justify-center pt-42 pb-24 px-8 sm:px-0">
           <div className="relative w-[90%] max-w-[700px] flex justify-center">
             <div className="relative w-[100%] self-center shadow-md">
               <Image
@@ -73,7 +73,7 @@ export default function HomePage() {
 
               {/* Top-left red banner */}
               <div
-                className="absolute top-0 -left-0 sm:-top-[8%] sm:-left-[8%] z-10
+                className="absolute -top-[16%] -left-[10%] sm:-top-[8%] sm:-left-[8%] z-10
                     bg-[#b84c38] text-white
                     px-3 py-2 sm:px-5 sm:py-3
                     text-[9px] sm:text-[11px] md:text-sm
@@ -87,7 +87,7 @@ export default function HomePage() {
 
               {/* Bottom-right tan banner */}
               <div
-                className="absolute bottom-0 -right-0 sm:-bottom-[8%] sm:-right-[8%] z-10
+                className="absolute -bottom-[16%] -right-[10%] sm:-bottom-[8%] sm:-right-[8%] z-10
                     bg-[#c9a055] text-white
                     px-3 py-2 sm:px-5 sm:py-3
                     text-[9px] sm:text-[11px] md:text-sm
@@ -103,22 +103,22 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 2: Kitchen + Buddha collage ── */}
-        <section className="relative w-full flex justify-center py-40">
-          <div className="relative w-[52%] max-w-[460px] flex items-end">
-            {/* Kitchen photo — wider, sits left */}
-            <div className="relative w-[70%] aspect-[4/3] overflow-hidden shadow-md z-10">
+        <section className="relative w-full flex justify-center pt-42 pb-24">
+          <div className="relative w-[35%] max-w-[500px]">
+            {/* Kitchen photo — centered */}
+            <div className="relative w-full aspect-[16/9] overflow-hidden shadow-md z-10">
               <Image
-                src="/HomePictures/fillerpic.png"
+                src="/HomePictures/cooking.png"
                 alt="Kitchen"
                 fill
                 className="object-cover"
               />
             </div>
 
-            {/* Decor / Buddha photo — taller, overlaps right edge of kitchen photo */}
-            <div className="relative w-[38%] aspect-[3/4] overflow-hidden shadow-md -ml-5 mb-3 z-20">
+            {/* Buddha photo — absolutely pinned to top-right of cooking photo */}
+            <div className="absolute -top-[40%] -right-[15%] w-[35%] aspect-[3/5] overflow-hidden shadow-xl z-20">
               <Image
-                src="/HomePictures/fillerpic2.png"
+                src="/HomePictures/buddah.png"
                 alt="Thai Decor"
                 fill
                 className="object-cover"
@@ -128,7 +128,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 3: Dish card — plate left, text right ── */}
-        <section className="relative w-full flex justify-center py-40">
+        <section className="relative w-full flex justify-center py-24">
           <div className="relative w-[52%] max-w-[460px] flex items-center">
             {/* Circular plate — overhangs left of card */}
             <div
@@ -167,7 +167,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 4: Dish card — text left, plate right ── */}
-        <section className="relative w-full flex justify-center py-40">
+        <section className="relative w-full flex justify-center py-24">
           <div className="relative w-[52%] max-w-[460px] flex items-center">
             {/* Text card */}
             <div className="bg-[#b84c38] px-5 py-4 -mr-3 z-0 flex-1 tracking-widest shadow-sm">
@@ -206,7 +206,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 5: Map ── */}
-        <section className="w-full flex justify-center py-40 pb-52">
+        <section className="w-full flex justify-center py-24 pb-52">
           <div className="relative w-[52%] max-w-[460px] aspect-[4/3] overflow-hidden shadow-md">
             <Image
               src="/HomePictures/map.png"
