@@ -13,7 +13,7 @@ export default function HomePage() {
   const callButtonRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <main className="flex flex-col flex-1">
+    <main className="flex flex-col flex-1 w-full">
       {/* ─── HERO ────────────────────────────────────────────────────────── */}
       <div className="flex flex-col min-h-screen items-center justify-between px-4 mb-8">
         <div
@@ -76,7 +76,7 @@ export default function HomePage() {
                 className="absolute -top-[16%] -left-[10%] sm:-top-[8%] sm:-left-[8%] z-10
                     bg-[#b84c38] text-white
                     px-3 py-2 sm:px-5 sm:py-3
-                    text-[9px] sm:text-[11px] md:text-sm
+                    text-[11px] md:text-sm
                     tracking-[.15em] font-semibold leading-relaxed
                     shadow-sm"
               >
@@ -90,7 +90,7 @@ export default function HomePage() {
                 className="absolute -bottom-[16%] -right-[10%] sm:-bottom-[8%] sm:-right-[8%] z-10
                     bg-[#c9a055] text-white
                     px-3 py-2 sm:px-5 sm:py-3
-                    text-[9px] sm:text-[11px] md:text-sm
+                    text-[11px] md:text-sm
                     tracking-[.15em] font-semibold leading-relaxed
                     text-right shadow-sm"
               >
@@ -127,30 +127,27 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Section 3: Dish card — plate left, text right ── */}
-        <section className="relative w-full flex justify-center py-10 sm:py-16 md:py-20 lg:py-24">
-          <div className="relative w-[52%] max-w-[460px] flex items-center">
-            {/* Circular plate — overhangs left of card */}
-            <div
-              className="relative flex-shrink-0
-                  w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44
-                  rounded-full overflow-hidden
-                  shadow-lg z-10 -ml-6"
-            >
-              <Image
-                src="/HomePictures/PhadKeeMao.png"
-                alt="Phad Kee Mao"
-                fill
-                className="object-cover"
-              />
+        {/* ── Section 3: Dish card ── */}
+        <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pr-[6%] mt-12 py-6 sm:py-16 md:py-20 lg:py-24">
+          <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
+            {/* Circular plate — stacked on mobile, offset on desktop */}
+            <div className="flex justify-center sm:block absolute -top-[40%] sm:-top-[36%] left-0 -translate-x-[60%] sm:-translate-x-[50%] md:-translate-x-[70%] mb-4 sm:mb-0">
+              <div className="relative w-46 h-46 md:w-60 md:h-60 rounded-full overflow-hidden shadow-lg flex-shrink-0">
+                <Image
+                  src="/HomePictures/PhadKeeMao.png"
+                  alt="Phad Kee Mao"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
 
             {/* Text card */}
-            <div className="bg-[#e8ddd0] px-5 py-4 -ml-3 z-0 flex-1 tracking-widest shadow-sm">
-              <p className="text-[#b84c38] font-bold text-lg sm:text-xl md:text-2xl mb-2 tracking-[.2em]">
+            <div className="bg-[#e8ddd0] px-5 pt-5 pb-4 sm:pl-8 z-0 tracking-widest shadow-sm text-right">
+              <p className="text-[#b84c38] font-bold text-2xl sm:text-3xl md:text-4xl mb-2 tracking-[.2em]">
                 PHAD KEE MAO
               </p>
-              <p className="text-xs sm:text-sm md:text-base leading-relaxed text-gray-600 uppercase tracking-widest">
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-600 uppercase tracking-widest">
                 AKA: Drunken Noodles
                 <br />
                 Spicy stir-fried rice noodles
@@ -165,15 +162,27 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── Section 4: Dish card — text left, plate right ── */}
-        <section className="relative w-full flex justify-center py-10 sm:py-16 md:py-20 lg:py-24">
-          <div className="relative w-[52%] max-w-[500px] flex items-center">
+        {/* ── Section 4: Dish card ── */}
+        <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pl-[6%] mt-12 py-6 sm:py-16 md:py-20 lg:py-24">
+          <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
+            {/* Circular plate — stacked on mobile, offset on desktop */}
+            <div className="flex justify-center sm:block absolute -top-[40%] sm:-top-[36%] right-0 translate-x-[60%] sm:translate-x-[50%] md:translate-x-[70%] mb-4 sm:mb-0">
+              <div className="relative w-46 h-46 md:w-60 md:h-60 rounded-full overflow-hidden shadow-lg flex-shrink-0">
+                <Image
+                  src="/HomePictures/PadThai.png"
+                  alt="Pad Thai"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
             {/* Text card */}
-            <div className="bg-[#b84c38] px-5 py-4 -mr-3 z-0 flex-1 tracking-widest shadow-sm">
-              <p className="text-white font-bold text-lg sm:text-xl md:text-2xl mb-2 tracking-[.2em]">
+            <div className="bg-[#b84c38] px-5 pt-5 pb-4 sm:pr-8 z-0 tracking-widest shadow-sm">
+              <p className="text-white font-bold text-2xl sm:text-3xl md:text-4xl mb-2 tracking-[.2em]">
                 PAD THAI
               </p>
-              <p className="text-xs sm:text-sm md:text-base leading-relaxed text-red-100 uppercase tracking-widest">
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed text-red-100 uppercase tracking-widest">
                 AKA: Thailand's iconic noodles
                 <br />
                 Sweet, savory, and tangy
@@ -184,21 +193,6 @@ export default function HomePage() {
                 <br />
                 and a touch of magic
               </p>
-            </div>
-
-            {/* Circular plate — overhangs right of card */}
-            <div
-              className="relative flex-shrink-0
-                  w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44
-                  rounded-full overflow-hidden
-                  shadow-lg z-10 -mr-6"
-            >
-              <Image
-                src="/HomePictures/PadThai.png"
-                alt="Pad Thai"
-                fill
-                className="object-cover"
-              />
             </div>
           </div>
         </section>
