@@ -73,7 +73,7 @@ export default function HomePage() {
 
               {/* Top-left red banner */}
               <div
-                className="absolute -top-[16%] -left-[10%] sm:-top-[8%] sm:-left-[8%] z-10
+                className="absolute -top-12 -left-2 sm:-left-4 md:-top-[14%] md:-left-[12%] lg:-top-[10%] lg:-left-[14%] z-10
                     bg-[#b84c38] text-white
                     px-3 py-2 sm:px-5 sm:py-3
                     text-[11px] md:text-sm
@@ -87,7 +87,7 @@ export default function HomePage() {
 
               {/* Bottom-right tan banner */}
               <div
-                className="absolute -bottom-[16%] -right-[10%] sm:-bottom-[8%] sm:-right-[8%] z-10
+                className="absolute -bottom-12 -right-2 sm:-right-4 md:-bottom-[14%] md:-right-[12%] lg:-bottom-[10%] lg:-right-[14%] z-10
                     bg-[#c9a055] text-white
                     px-3 py-2 sm:px-5 sm:py-3
                     text-[11px] md:text-sm
@@ -131,8 +131,8 @@ export default function HomePage() {
         <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pr-[6%] mt-12 py-6 sm:py-16 md:py-20 lg:py-24">
           <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
             {/* Circular plate — stacked on mobile, offset on desktop */}
-            <div className="flex justify-center sm:block absolute -top-[40%] sm:-top-[36%] left-0 -translate-x-[60%] sm:-translate-x-[50%] md:-translate-x-[70%] mb-4 sm:mb-0">
-              <div className="relative w-46 h-46 md:w-60 md:h-60 rounded-full overflow-hidden shadow-lg flex-shrink-0">
+            <div className="flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] left-0 -translate-x-[60%] sm:-translate-x-[50%] md:-translate-x-[70%] mb-4 sm:mb-0">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg flex-shrink-0">
                 <Image
                   src="/HomePictures/PhadKeeMao.png"
                   alt="Phad Kee Mao"
@@ -166,8 +166,8 @@ export default function HomePage() {
         <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pl-[6%] mt-12 py-6 sm:py-16 md:py-20 lg:py-24">
           <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
             {/* Circular plate — stacked on mobile, offset on desktop */}
-            <div className="flex justify-center sm:block absolute -top-[40%] sm:-top-[36%] right-0 translate-x-[60%] sm:translate-x-[50%] md:translate-x-[70%] mb-4 sm:mb-0">
-              <div className="relative w-46 h-46 md:w-60 md:h-60 rounded-full overflow-hidden shadow-lg flex-shrink-0">
+            <div className="flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] right-0 translate-x-[60%] sm:translate-x-[50%] md:translate-x-[70%] mb-4 sm:mb-0">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg flex-shrink-0">
                 <Image
                   src="/HomePictures/PadThai.png"
                   alt="Pad Thai"
@@ -201,7 +201,7 @@ export default function HomePage() {
         <section className="w-full flex justify-center pt-10 sm:pt-16 md:pt-20 lg:pt-24 pb-24 sm:pb-32 md:pb-40 lg:pb-52">
           <div className="relative w-[52%] max-w-[460px] aspect-[4/3] overflow-hidden shadow-md">
             <Image
-              src="/HomePictures/map.png"
+              src="/HomePictures/cooking.png"
               alt="Thai Ginger Location Map"
               fill
               className="object-cover"
