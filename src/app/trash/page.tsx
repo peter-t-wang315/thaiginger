@@ -60,7 +60,7 @@ export default function HomePage() {
       {/* ─── BODY ────────────────────────────────────────────────────────── */}
       <div ref={bodySectionRef} className="flex flex-col items-center">
         {/* ── Section 1: Exterior photo + overlapping banners ── */}
-        <section className="relative w-full flex justify-center pt-12 sm:pt-20 md:pt-28 lg:pt-42 pb-12 sm:pb-16 md:pb-20 lg:pb-24 px-8 overflow-x-clip">
+        <section className="relative w-full flex justify-center pt-24 sm:pt-16 md:pt-24 lg:pt-32 pb-24 sm:pb-16 md:pb-24 lg:pb-32 px-8 overflow-x-clip">
           <div className="relative w-[90%] max-w-[700px] flex justify-center">
             <div className="relative w-[100%] self-center shadow-md">
               <Image
@@ -103,10 +103,10 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 2: Kitchen + Buddha collage ── */}
-        <section className="relative w-full flex justify-center mt-10 pt-10 sm:pt-20 md:pt-28 lg:pt-42 pb-10 sm:pb-16 md:pb-20 lg:pb-24 overflow-x-clip">
-          <div className="relative w-[60%] sm:w-[60%] md:w-[45%] max-w-[500px]">
+        <section className="relative w-full flex justify-center pt-12 sm:pt-30 md:pt-24 lg:pt-32 pb-18 sm:pb-16 md:pb-24 lg:pb-32 overflow-x-clip">
+          <div className="relative w-[66%] sm:w-[60%] md:w-[45%] max-w-[500px]">
             {/* Kitchen photo — centered */}
-            <div className="relative w-full aspect-[16/9] overflow-hidden shadow-md z-10">
+            <div className="relative w-full aspect-[9/6] xs:aspect-[16/9] overflow-hidden shadow-md z-10">
               <Image
                 src="/HomePictures/cooking.png"
                 alt="Kitchen"
@@ -116,7 +116,7 @@ export default function HomePage() {
             </div>
 
             {/* Buddha photo — absolutely pinned to top-right of cooking photo */}
-            <div className="absolute -top-[25%] -right-[8%] sm:-top-[35%] sm:-right-[12%] md:-top-[40%] md:-right-[15%] w-[30%] sm:w-[32%] md:w-[35%] aspect-[3/5] overflow-hidden shadow-xl z-20">
+            <div className="absolute -top-[35%] -right-[14%] xs:-top-[25%] sm:-top-[35%] sm:-right-[12%] md:-top-[40%] md:-right-[15%] w-[38%] xs:w-[30%] sm:w-[32%] md:w-[35%] aspect-[2/3] xs:aspect-[3/5] overflow-hidden shadow-xl z-20">
               <Image
                 src="/HomePictures/buddah.png"
                 alt="Thai Decor"
@@ -128,7 +128,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 3: Dish card ── */}
-        <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pr-[6%] mt-12 py-6 sm:py-16 md:py-20 lg:py-24">
+        <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pr-[6%] pt-16 sm:pt-26 md:pt-24 lg:pt-24 pb-20 sm:pb-16 md:pb-24 lg:pb-32">
           <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
             {/* Circular plate — stacked on mobile, offset on desktop */}
             <div className="flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] left-0 -translate-x-[45%] sm:-translate-x-[50%] md:-translate-x-[70%] mb-4 sm:mb-0">
@@ -163,7 +163,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 4: Dish card ── */}
-        <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pl-[6%] mt-12 py-6 sm:py-16 md:py-20 lg:py-24">
+        <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pl-[6%] pt-16 sm:pt-26 md:pt-24 lg:pt-20 pb-20 sm:pb-16 md:pb-24 lg:pb-32">
           <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
             {/* Circular plate — stacked on mobile, offset on desktop */}
             <div className="flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] right-0 translate-x-[45%] sm:translate-x-[50%] md:translate-x-[70%] mb-4 sm:mb-0">
@@ -198,7 +198,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 5: Map ── */}
-        <section className="w-full flex justify-center pt-10 sm:pt-16 md:pt-20 lg:pt-24 pb-24 sm:pb-32 md:pb-40 lg:pb-52">
+        <section className="w-full flex justify-center pt-16 sm:pt-16 md:pt-24 lg:pt-18 pb-32 sm:pb-24 md:pb-32 lg:pb-40">
           <div className="relative w-[52%] max-w-[460px] aspect-[4/3] overflow-hidden shadow-md">
             <Image
               src="/HomePictures/cooking.png"
