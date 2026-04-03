@@ -96,7 +96,7 @@ export default function HomePage() {
             height={400}
             className="my-[32px] w-[50%] h-auto"
           />
-          <div className="flex flex-row w-[80%] justify-between gap-4 sm:gap-0 mt-6">
+          <div className="flex flex-row w-[100%] justify-between xs:justify-around sm:justify-between gap-0 mt-6">
             <Button
               variant="link"
               className="text-2xl md:text-3xl lg:text-4xl"
