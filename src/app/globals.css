@@ -2,6 +2,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@theme {
+  --breakpoint-xs: 330px;
+}
+
 @theme inline {
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);

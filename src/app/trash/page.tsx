@@ -13,7 +13,7 @@ export default function HomePage() {
   const callButtonRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <main className="flex flex-col flex-1 w-full">
+    <main className="flex flex-col flex-1 w-full overflow-x-hidden">
       {/* ─── HERO ────────────────────────────────────────────────────────── */}
       <div className="flex flex-col min-h-screen items-center justify-between px-4 mb-8">
         <div
@@ -60,7 +60,7 @@ export default function HomePage() {
       {/* ─── BODY ────────────────────────────────────────────────────────── */}
       <div ref={bodySectionRef} className="flex flex-col items-center">
         {/* ── Section 1: Exterior photo + overlapping banners ── */}
-        <section className="relative w-full flex justify-center pt-12 sm:pt-20 md:pt-28 lg:pt-42 pb-12 sm:pb-16 md:pb-20 lg:pb-24 px-8">
+        <section className="relative w-full flex justify-center pt-12 sm:pt-20 md:pt-28 lg:pt-42 pb-12 sm:pb-16 md:pb-20 lg:pb-24 px-8 overflow-x-clip">
           <div className="relative w-[90%] max-w-[700px] flex justify-center">
             <div className="relative w-[100%] self-center shadow-md">
               <Image
@@ -68,12 +68,12 @@ export default function HomePage() {
                 alt="Thai Ginger Outside"
                 width={800}
                 height={600}
-                className="w-full h-auto"
+                className="w-full h-auto xs:aspect-[16/10] aspect-[16/12] sm:aspect-auto object-cover"
               />
 
               {/* Top-left red banner */}
               <div
-                className="absolute -top-12 -left-2 sm:-left-4 md:-top-[14%] md:-left-[12%] lg:-top-[10%] lg:-left-[14%] z-10
+                className="absolute -top-16 -left-2 xs:-top-12 sm:-top-[8%] sm:-left-4 md:-top-[14%] md:-left-[12%] lg:-top-[10%] lg:-left-[14%] z-10
                     bg-[#b84c38] text-white
                     px-3 py-2 sm:px-5 sm:py-3
                     text-[11px] md:text-sm
@@ -87,7 +87,7 @@ export default function HomePage() {
 
               {/* Bottom-right tan banner */}
               <div
-                className="absolute -bottom-12 -right-2 sm:-right-4 md:-bottom-[14%] md:-right-[12%] lg:-bottom-[10%] lg:-right-[14%] z-10
+                className="absolute -bottom-10 -right-2 xs:-bottom-12 sm:-bottom-[8%] sm:-right-4 md:-bottom-[14%] md:-right-[12%] lg:-bottom-[10%] lg:-right-[14%] z-10
                     bg-[#c9a055] text-white
                     px-3 py-2 sm:px-5 sm:py-3
                     text-[11px] md:text-sm
@@ -103,7 +103,7 @@ export default function HomePage() {
         </section>
 
         {/* ── Section 2: Kitchen + Buddha collage ── */}
-        <section className="relative w-full flex justify-center mt-10 pt-10 sm:pt-20 md:pt-28 lg:pt-42 pb-10 sm:pb-16 md:pb-20 lg:pb-24">
+        <section className="relative w-full flex justify-center mt-10 pt-10 sm:pt-20 md:pt-28 lg:pt-42 pb-10 sm:pb-16 md:pb-20 lg:pb-24 overflow-x-clip">
           <div className="relative w-[60%] sm:w-[60%] md:w-[45%] max-w-[500px]">
             {/* Kitchen photo — centered */}
             <div className="relative w-full aspect-[16/9] overflow-hidden shadow-md z-10">
@@ -131,7 +131,7 @@ export default function HomePage() {
         <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pr-[6%] mt-12 py-6 sm:py-16 md:py-20 lg:py-24">
           <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
             {/* Circular plate — stacked on mobile, offset on desktop */}
-            <div className="flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] left-0 -translate-x-[60%] sm:-translate-x-[50%] md:-translate-x-[70%] mb-4 sm:mb-0">
+            <div className="flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] left-0 -translate-x-[45%] sm:-translate-x-[50%] md:-translate-x-[70%] mb-4 sm:mb-0">
               <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg flex-shrink-0">
                 <Image
                   src="/HomePictures/PhadKeeMao.png"
@@ -166,7 +166,7 @@ export default function HomePage() {
         <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pl-[6%] mt-12 py-6 sm:py-16 md:py-20 lg:py-24">
           <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
             {/* Circular plate — stacked on mobile, offset on desktop */}
-            <div className="flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] right-0 translate-x-[60%] sm:translate-x-[50%] md:translate-x-[70%] mb-4 sm:mb-0">
+            <div className="flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] right-0 translate-x-[45%] sm:translate-x-[50%] md:translate-x-[70%] mb-4 sm:mb-0">
               <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg flex-shrink-0">
                 <Image
                   src="/HomePictures/PadThai.png"
