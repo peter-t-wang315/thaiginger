@@ -7,212 +7,271 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-
-import gingerRoot from "../../../public/temp-ginger-root.png";
-import slice from "../../../public/slice.png";
+import gingerRoot from "../../public/temp-ginger-root.png";
+import slice from "../../public/slice.png";
+import { useGSAP } from "@gsap/react";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import { MotionPathHelper } from "gsap/MotionPathHelper";
 
+gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, MotionPathHelper);
 
 export default function HomePage() {
-  const gingerRef = useRef<HTMLDivElement>(null);
-  const slicesRef = useRef<HTMLImageElement[]>([]);
+  const landingSectionRef = useRef<HTMLDivElement>(null);
+  const bodySectionRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const callButtonRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    const ginger = gingerRef.current;
-    const vh = window.innerHeight;
-    if (!ginger) return;
+  // useGSAP(() => {
+  //   // gsap
+  //   //   .timeline({
+  //   //     scrollTrigger: {
+  //   //       trigger: landingSectionRef.current,
+  //   //       start: "55% center",
+  //   //       end: "bottom 20%",
+  //   //       scrub: true,
+  //   //       markers: true,
+  //   //     },
+  //   //   })
+  //   //   .to(menuButtonRef.current, {
+  //   //     ease: "power1.inOut",
+  //   //     x: "-95%",
+  //   //   });
 
-    const motionPaths = [
-      [
-        { x: 100, y: vh * 0.5 },
-        { x: 200, y: vh * 1.5 },
-        { x: 300, y: vh * 3 },
-      ],
-      [
-        { x: 200, y: vh * 0.5 },
-        { x: 50, y: vh * 1.5 },
-        { x: 100, y: vh * 3 },
-      ],
-      [
-        { x: 25, y: vh * 0.5 },
-        { x: 175, y: vh * 1.5 },
-        { x: 340, y: vh * 3 },
-      ],
-      [
-        { x: 150, y: vh * 0.5 },
-        { x: 400, y: vh * 1.5 },
-        { x: 225, y: vh * 3 },
-      ],
-    ];
+  //   // gsap.timeline({
+  //   //   scrollTrigger: {
+  //   //     trigger: menuButtonRef.current,
+  //   //     start: "top center",
+  //   //     endTrigger: bodySectionRef.current,
+  //   //     end: "bottom bottom",
+  //   //     scrub: true,
+  //   //     pin: true,
+  //   //     markers: true,
+  //   //   },
+  //   // });
+  //   const totalScroll = document.body.scrollHeight - window.innerHeight;
 
-    MotionPathHelper.create("#slice1");
+  //   gsap.set(menuButtonRef.current, { x: 0, y: 0 });
 
-    // slicesRef.current.forEach((slice, i) => {
-    //   if (!slice) return;
-
-    //   gsap.to(slice, {
-    //   ease: "power1.inOut",
-    //   motionPath: {
-    //     path: motionPaths[i],
-    //     align: "self",
-    //     alignOrigin: [0.5, 0.5],
-    //   },
-    //   rotation: gsap.utils.random(-1080, 1080),
-    //   scrollTrigger: {
-    //     trigger: document.body,
-    //     start: "top top",
-    //     end: "bottom bottom",
-    //     scrub: true,
-    //     markers: true,
-    //   },
-    // });
-    // });
-
-    const what =
-      "M206,-2747 C206,-2719.1 -126.098,-515.799 -164.655,-54.225 -168.939,-2.94 -89.6,70.3 -88,72 -77.6,81.75 -58.386,119.654 -6.899,124.694 20.824,127.407 89.15,100 100,100 ";
-
-    const tl = gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: document.body,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: true,
-          markers: true,
-        },
-      })
-      .to(
-        slicesRef.current[0],
-        {
-          ease: "power1.inOut",
-          motionPath: {
-            path: what,
-            align: "self",
-            alignOrigin: [0.5, 0.5],
-          },
-          rotation: gsap.utils.random(-1080, 1080),
-        },
-        0
-      )
-      .to(
-        slicesRef.current[1],
-        {
-          ease: "power1.inOut",
-          motionPath: {
-            path: motionPaths[1],
-            align: "self",
-            alignOrigin: [0.5, 0.5],
-          },
-          rotation: gsap.utils.random(-1080, 1080),
-        },
-        0
-      )
-      .to(
-        slicesRef.current[2],
-        {
-          ease: "power1.inOut",
-          motionPath: {
-            path: motionPaths[2],
-            align: "self",
-            alignOrigin: [0.5, 0.5],
-          },
-          rotation: gsap.utils.random(-1080, 1080),
-        },
-        0
-      )
-      .to(
-        slicesRef.current[3],
-        {
-          ease: "power1.inOut",
-          motionPath: {
-            path: motionPaths[3],
-            align: "self",
-            alignOrigin: [0.5, 0.5],
-          },
-          rotation: gsap.utils.random(-1080, 1080),
-        },
-        0
-      );
-  }, []);
+  //   gsap.to(menuButtonRef.current, {
+  //     scrollTrigger: {
+  //       trigger: landingSectionRef.current,
+  //       start: "top top",
+  //       endTrigger: bodySectionRef.current,
+  //       end: "bottom bottom",
+  //       scrub: true,
+  //       markers: true,
+  //     },
+  //     motionPath: {
+  //       path: [
+  //         { x: "-90%", y: 0 },
+  //         { x: "-90%", y: totalScroll }, // Move straight down the middle
+  //       ],
+  //       align: "self",
+  //       autoRotate: false,
+  //     },
+  //     ease: "linear",
+  //   });
+  // }, []);
 
   return (
-    <main className="bg-yellow-500 font-sans text-gray-800 overflow-hidden">
-      <section className="h-screen flex flex-col items-center justify-center relative z-10">
-        <Card className="p-6 text-center">
-          <h1 className="text-5xl font-bold mb-4">Welcome to Thai Ginger</h1>
-          <p className="text-xl max-w-xl mx-auto">
-            Experience the vibrant flavors of Thailand in every bite.
-          </p>
-          <div className="relative mt-12" ref={gingerRef}>
-            <Image
-              src={gingerRoot}
-              alt="Ginger Root"
-              width={300}
-              height={300}
-            />
-            {[slice, slice, slice, slice].map((src, i) => (
-              <Image
-                id={`slice${i}`}
-                key={i}
-                src={src}
-                alt={`Ginger Slice ${i + 1}`}
-                width={60}
-                height={60}
-                className="absolute left-1/2 top-0 -translate-x-1/2"
-                ref={(el) => {
-                  if (el) slicesRef.current[i] = el;
-                }}
-              />
-            ))}
+    <main className="flex flex-col flex-1 w-full overflow-x-hidden">
+      {/* ─── HERO ────────────────────────────────────────────────────────── */}
+      <div className="flex flex-col min-h-screen items-center justify-between px-4 mb-8">
+        <div
+          ref={landingSectionRef}
+          className="flex flex-col items-center justify-center space-y-6 flex-1
+             tracking-[.5em] md:tracking-[.75em] text-center"
+        >
+          <h1 className="text-[86px] leading-none lg:text-9xl text-primary">
+            THAI GINGER
+          </h1>
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-thai text-primary">
+            ขิงไทย
+          </h1>
+          <Image
+            src={gingerRoot}
+            alt="Ginger Root"
+            width={400}
+            height={400}
+            className="my-[32px] w-[50%] h-auto"
+          />
+          <div className="flex flex-row w-[100%] justify-between xs:justify-around sm:justify-between gap-0 mt-6">
+            <Button
+              variant="link"
+              className="text-2xl md:text-3xl lg:text-4xl"
+              ref={menuButtonRef}
+            >
+              Menu
+            </Button>
+            <Button
+              variant="link"
+              className="underline-swipe-right text-2xl md:text-3xl lg:text-4xl"
+              ref={callButtonRef}
+            >
+              Call
+            </Button>
           </div>
-        </Card>
-      </section>
+        </div>
+        <div className="pb-6 text-center sm:text-xl md:text-2xl tracking-widest">
+          <h3>Tuesday - Sunday</h3>
+          <h3>11AM - 9PM</h3>
+        </div>
+      </div>
 
-      <div className="h-[500px]">what</div>
+      {/* ─── BODY ────────────────────────────────────────────────────────── */}
+      <div ref={bodySectionRef} className="flex flex-col items-center">
+        {/* ── Section 1: Exterior photo + overlapping banners ── */}
+        <section className="relative w-full flex justify-center pt-24 sm:pt-16 md:pt-24 lg:pt-32 pb-24 sm:pb-16 md:pb-24 lg:pb-32 px-8 overflow-x-clip">
+          <div className="relative w-[90%] max-w-[700px] flex justify-center">
+            <div className="relative w-[100%] self-center shadow-md">
+              <Image
+                src="/HomePictures/thaiGingerOutside.png"
+                alt="Thai Ginger Outside"
+                width={800}
+                height={600}
+                className="w-full h-auto xs:aspect-[16/10] aspect-[16/12] sm:aspect-auto object-cover"
+              />
 
-      <section className="min-h-screen px-8 py-24 bg-orange-50 flex flex-col justify-center items-center text-center">
-        <Card className="p-6 max-w-xl">
-          <h2 className="text-4xl font-semibold mb-4">
-            Authentic Thai Cuisine
-          </h2>
-          <CardContent>
-            <p>
-              From Pad Thai to Tom Yum soup, our dishes are crafted with
-              traditional recipes and fresh ingredients.
-            </p>
-          </CardContent>
-        </Card>
-      </section>
+              {/* Top-left red banner */}
+              <div
+                className="absolute -top-16 -left-2 xs:-top-12 sm:-top-[8%] sm:-left-4 md:-top-[14%] md:-left-[12%] lg:-top-[10%] lg:-left-[14%] z-10
+                    bg-[#b84c38] text-white
+                    px-3 py-2 sm:px-5 sm:py-3
+                    text-[11px] md:text-sm
+                    tracking-[.15em] font-semibold leading-relaxed
+                    shadow-sm"
+              >
+                FROM THE ROLLING HILLS OF NORTHERN THAILAND,
+                <br />
+                TO THE ROLLING WHEAT FIELDS OF PULLMAN
+              </div>
 
-      <section className="min-h-screen px-8 py-24 bg-yellow-100 flex flex-col justify-center items-center text-center">
-        <Card className="p-6 max-w-xl">
-          <h2 className="text-4xl font-semibold mb-4">
-            Locally Sourced Ingredients
-          </h2>
-          <CardContent>
-            <p>
-              We prioritize fresh, local produce to ensure every bite is
-              bursting with flavor and authenticity.
-            </p>
-          </CardContent>
-        </Card>
-      </section>
+              {/* Bottom-right tan banner */}
+              <div
+                className="absolute -bottom-10 -right-2 xs:-bottom-12 sm:-bottom-[8%] sm:-right-4 md:-bottom-[14%] md:-right-[12%] lg:-bottom-[10%] lg:-right-[14%] z-10
+                    bg-[#c9a055] text-white
+                    px-3 py-2 sm:px-5 sm:py-3
+                    text-[11px] md:text-sm
+                    tracking-[.15em] font-semibold leading-relaxed
+                    text-right shadow-sm"
+              >
+                FOR 11+ YEARS THAI GINGER BRINGS
+                <br />
+                AUTHENTIC THAI CUISINE TO THE PALOUSE
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <section className="min-h-screen px-8 py-24 bg-orange-100 flex flex-col justify-center items-center text-center">
-        <Card className="p-6 max-w-xl">
-          <h2 className="text-4xl font-semibold mb-4">
-            Warm, Inviting Atmosphere
-          </h2>
-          <CardContent>
-            <p>
-              Our restaurant is designed to give you a relaxing and culturally
-              rich dining experience.
-            </p>
-          </CardContent>
-        </Card>
-      </section>
+        {/* ── Section 2: Kitchen + Buddha collage ── */}
+        <section className="relative w-full flex justify-center pt-12 sm:pt-30 md:pt-24 lg:pt-32 pb-18 sm:pb-16 md:pb-24 lg:pb-32 overflow-x-clip">
+          <div className="relative w-[66%] sm:w-[60%] md:w-[45%] max-w-[500px]">
+            {/* Kitchen photo — centered */}
+            <div className="relative w-full aspect-[9/6] xs:aspect-[16/9] overflow-hidden shadow-md z-10">
+              <Image
+                src="/HomePictures/cooking.png"
+                alt="Kitchen"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Buddha photo — absolutely pinned to top-right of cooking photo */}
+            <div className="absolute -top-[35%] -right-[14%] xs:-top-[25%] sm:-top-[35%] sm:-right-[12%] md:-top-[40%] md:-right-[15%] w-[38%] xs:w-[30%] sm:w-[32%] md:w-[35%] aspect-[2/3] xs:aspect-[3/5] overflow-hidden shadow-xl z-20">
+              <Image
+                src="/HomePictures/buddah.png"
+                alt="Thai Decor"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ── Section 3: Dish card ── */}
+        <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pr-[6%] pt-16 sm:pt-26 md:pt-24 lg:pt-24 pb-20 sm:pb-16 md:pb-24 lg:pb-32">
+          <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
+            {/* Circular plate — stacked on mobile, offset on desktop */}
+            <div className="flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] left-0 -translate-x-[45%] sm:-translate-x-[50%] md:-translate-x-[70%] mb-4 sm:mb-0">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg flex-shrink-0">
+                <Image
+                  src="/HomePictures/PhadKeeMao.png"
+                  alt="Phad Kee Mao"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Text card */}
+            <div className="bg-[#e8ddd0] px-5 pt-5 pb-4 sm:pl-8 z-0 tracking-widest shadow-sm text-right">
+              <p className="text-[#b84c38] font-bold text-2xl sm:text-3xl md:text-4xl mb-2 tracking-[.2em]">
+                PHAD <br className="block lg:hidden" />
+                KEE MAO
+              </p>
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-600 uppercase tracking-widest">
+                AKA: Drunken Noodles
+                <br />
+                Spicy stir-fried rice noodles
+                <br />
+                with Thai basil, garlic, and
+                <br />
+                chillies — bold, fiery,
+                <br />
+                and full of flavor
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Section 4: Dish card ── */}
+        <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pl-[6%] pt-16 sm:pt-26 md:pt-24 lg:pt-20 pb-20 sm:pb-16 md:pb-24 lg:pb-32">
+          <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
+            {/* Circular plate — stacked on mobile, offset on desktop */}
+            <div className="flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] right-0 translate-x-[45%] sm:translate-x-[50%] md:translate-x-[70%] mb-4 sm:mb-0">
+              <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg flex-shrink-0">
+                <Image
+                  src="/HomePictures/PadThai.png"
+                  alt="Pad Thai"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Text card */}
+            <div className="bg-[#b84c38] px-5 pt-5 pb-4 sm:pr-8 z-0 tracking-widest shadow-sm">
+              <p className="text-white font-bold text-2xl sm:text-3xl md:text-4xl mb-2 tracking-[.2em]">
+                PAD THAI
+              </p>
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed text-red-100 uppercase tracking-widest">
+                AKA: Thailand's iconic noodles
+                <br />
+                Sweet, savory, and tangy
+                <br />
+                with stir-fried rice noodles,
+                <br />
+                crunchy peanuts, fresh lime,
+                <br />
+                and a touch of magic
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Section 5: Map ── */}
+        <section className="w-full flex justify-center pt-16 sm:pt-16 md:pt-24 lg:pt-18 pb-32 sm:pb-24 md:pb-32 lg:pb-40">
+          <div className="relative w-[52%] max-w-[460px] aspect-[4/3] overflow-hidden shadow-md">
+            <Image
+              src="/HomePictures/cooking.png"
+              alt="Thai Ginger Location Map"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

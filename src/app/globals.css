@@ -2,6 +2,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@theme {
+  --breakpoint-xs: 330px;
+}
+
 @theme inline {
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
@@ -92,6 +96,10 @@ h3 {
   text-align: center;
   font-family: var(--font-herculanum);
   color: var(--color-secondary);
+}
+
+p {
+  font-family: var(--font-herculanum);
 }
 
 /* Styling to make hovering on the Link buttons have a nice animation */
