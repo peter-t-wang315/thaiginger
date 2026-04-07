@@ -1,16 +1,78 @@
 // app/page.tsx (Next.js 13+ with app directory)
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import gingerRoot from "../../../public/temp-ginger-root.png";
+import { Card, CardContent } from "@/components/ui/card";
+import gingerRoot from "../../public/temp-ginger-root.png";
+import slice from "../../public/slice.png";
+import { useGSAP } from "@gsap/react";
+import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import { MotionPathHelper } from "gsap/MotionPathHelper";
+
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(MotionPathPlugin, ScrollTrigger, MotionPathHelper);
 
 export default function HomePage() {
   const landingSectionRef = useRef<HTMLDivElement>(null);
   const bodySectionRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const callButtonRef = useRef<HTMLButtonElement>(null);
+
+  // useGSAP(() => {
+  //   // gsap
+  //   //   .timeline({
+  //   //     scrollTrigger: {
+  //   //       trigger: landingSectionRef.current,
+  //   //       start: "55% center",
+  //   //       end: "bottom 20%",
+  //   //       scrub: true,
+  //   //       markers: true,
+  //   //     },
+  //   //   })
+  //   //   .to(menuButtonRef.current, {
+  //   //     ease: "power1.inOut",
+  //   //     x: "-95%",
+  //   //   });
+
+  //   // gsap.timeline({
+  //   //   scrollTrigger: {
+  //   //     trigger: menuButtonRef.current,
+  //   //     start: "top center",
+  //   //     endTrigger: bodySectionRef.current,
+  //   //     end: "bottom bottom",
+  //   //     scrub: true,
+  //   //     pin: true,
+  //   //     markers: true,
+  //   //   },
+  //   // });
+  //   const totalScroll = document.body.scrollHeight - window.innerHeight;
+
+  //   gsap.set(menuButtonRef.current, { x: 0, y: 0 });
+
+  //   gsap.to(menuButtonRef.current, {
+  //     scrollTrigger: {
+  //       trigger: landingSectionRef.current,
+  //       start: "top top",
+  //       endTrigger: bodySectionRef.current,
+  //       end: "bottom bottom",
+  //       scrub: true,
+  //       markers: true,
+  //     },
+  //     motionPath: {
+  //       path: [
+  //         { x: "-90%", y: 0 },
+  //         { x: "-90%", y: totalScroll }, // Move straight down the middle
+  //       ],
+  //       align: "self",
+  //       autoRotate: false,
+  //     },
+  //     ease: "linear",
+  //   });
+  // }, []);
 
   return (
     <main className="flex flex-col flex-1 w-full overflow-x-hidden">
@@ -34,7 +96,7 @@ export default function HomePage() {
             height={400}
             className="my-[32px] w-[50%] h-auto"
           />
-          <div className="flex flex-row w-[80%] justify-between gap-4 sm:gap-0 mt-6">
+          <div className="flex flex-row w-[100%] justify-between xs:justify-around sm:justify-between gap-0 mt-6">
             <Button
               variant="link"
               className="text-2xl md:text-3xl lg:text-4xl"
@@ -145,7 +207,8 @@ export default function HomePage() {
             {/* Text card */}
             <div className="bg-[#e8ddd0] px-5 pt-5 pb-4 sm:pl-8 z-0 tracking-widest shadow-sm text-right">
               <p className="text-[#b84c38] font-bold text-2xl sm:text-3xl md:text-4xl mb-2 tracking-[.2em]">
-                PHAD KEE MAO
+                PHAD <br className="block lg:hidden" />
+                KEE MAO
               </p>
               <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-600 uppercase tracking-widest">
                 AKA: Drunken Noodles
