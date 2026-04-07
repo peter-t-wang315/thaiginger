@@ -6,14 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Register ScrollTrigger plugin
 if (typeof window !== "undefined") {
@@ -81,7 +74,7 @@ export default function Home() {
           scale: 1,
           duration: 0.3,
         },
-        0.5 + timeDelay
+        0.5 + timeDelay,
       );
 
       // Create a unique swaying falling motion for each slice
@@ -104,7 +97,7 @@ export default function Home() {
             });
           },
         },
-        0.5 + timeDelay
+        0.5 + timeDelay,
       );
 
       // Fade in the corresponding section
@@ -115,7 +108,7 @@ export default function Home() {
           y: 0,
           duration: 0.5,
         },
-        0.7 + timeDelay
+        0.7 + timeDelay,
       );
     });
 
