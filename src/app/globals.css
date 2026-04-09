@@ -135,3 +135,8 @@ p {
     letter-spacing: 0.2em;
   }
 }
+
+@font-face {
+  font-family: "Herculanum";
+  src: url("/HerculanumLTProRoman.ttf") format("truetype");
+}
