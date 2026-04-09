@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${herculanum.variable} ${notoThai.variable} antialiased flex flex-col min-h-screen bg-background`}
+        className={`${notoThai.variable} antialiased flex flex-col min-h-screen bg-background`}
       >
         {children}
       </body>
