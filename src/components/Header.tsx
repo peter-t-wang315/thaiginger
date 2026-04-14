@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,6 +46,24 @@ export default function Header() {
   };
 
   useGSAP(() => {
+    const heroMenuBtn = document.querySelector(".hero-menu-btn");
+
+    // ── No hero on this page: show header immediately ─────────────────
+    if (!heroMenuBtn) {
+      gsap.set(headerRef.current, { yPercent: 0 });
+
+      gsap.from(headerRef.current, {
+        opacity: 0,
+        y: -16,
+        duration: 0.5,
+        ease: "power3.out",
+        delay: 0.2,
+      });
+
+      return;
+    }
+
+    // ── Hero exists: original scroll-triggered behaviour ──────────────
     gsap.set(headerRef.current, { yPercent: -100 });
 
     ScrollTrigger.create({
@@ -109,7 +128,6 @@ export default function Header() {
       },
 
       onLeaveBack: () => {
-        // Close dropdown if open when scrolling back up
         if (dropdownRef.current) {
           dropdownRef.current.style.display = "none";
         }
@@ -136,12 +154,14 @@ export default function Header() {
         ref={headerRef}
         className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-3 bg-white/90 backdrop-blur-sm shadow-sm"
       >
-        <span
-          ref={brandRef}
-          className="text-primary font-semibold tracking-[.25em] text-sm md:text-base"
-        >
-          THAI GINGER
-        </span>
+        <Link href="/">
+          <span
+            ref={brandRef}
+            className="text-primary font-semibold tracking-[.25em] text-sm md:text-base cursor-pointer hover:opacity-70 transition-opacity"
+          >
+            THAI GINGER
+          </span>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-16">
@@ -149,22 +169,25 @@ export default function Header() {
             ref={menuNavRef}
             variant="link"
             className="text-base tracking-widest text-primary"
+            asChild
           >
-            Menu
+            <Link href="/menu">Menu</Link>
           </Button>
           <Button
             ref={aboutNavRef}
             variant="link"
             className="text-base tracking-widest text-primary"
+            asChild
           >
-            About
+            <Link href="/about">About</Link>
           </Button>
           <Button
             ref={callNavRef}
             variant="link"
             className="text-base tracking-widest text-primary"
+            asChild
           >
-            Call
+            <a href="tel:+15093340477">Call</a>
           </Button>
         </nav>
 
@@ -177,7 +200,7 @@ export default function Header() {
           >
             {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
-          {/* These are invisible but still exist as GSAP animation targets */}
+          {/* Invisible but still exist as GSAP animation targets */}
           <button
             ref={menuNavRef}
             className="absolute opacity-0 pointer-events-none"
@@ -209,14 +232,26 @@ export default function Header() {
         ref={dropdownRef}
         className="fixed top-[48px] left-0 right-0 z-40 hidden flex-col items-center gap-2 py-4 bg-white/95 backdrop-blur-sm shadow-md md:hidden"
       >
-        <Button variant="link" className="text-lg tracking-widest text-primary">
-          Menu
+        <Button
+          variant="link"
+          className="text-lg tracking-widest text-primary"
+          asChild
+        >
+          <Link href="/menu">Menu</Link>
         </Button>
-        <Button variant="link" className="text-lg tracking-widest text-primary">
-          About
+        <Button
+          variant="link"
+          className="text-lg tracking-widest text-primary"
+          asChild
+        >
+          <Link href="/about">About</Link>
         </Button>
-        <Button variant="link" className="text-lg tracking-widest text-primary">
-          Call
+        <Button
+          variant="link"
+          className="text-lg tracking-widest text-primary"
+          asChild
+        >
+          <a href="tel:+15093340477">Call</a>
         </Button>
         <p className="text-xs tracking-widest text-gray-400 pt-2">
           Tue – Sun · 11AM – 9PM
