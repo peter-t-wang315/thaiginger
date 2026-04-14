@@ -10,6 +10,7 @@ import gingerRoot from "../../public/temp-ginger-root.png";
 import { useGSAP } from "@gsap/react";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import Header from "@/components/Header";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -17,6 +18,7 @@ export default function HomePage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLDivElement>(null);
   const callButtonRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useGSAP(
     () => {
@@ -184,6 +186,7 @@ export default function HomePage() {
                 <Button
                   variant="link"
                   className="hero-menu-btn text-2xl md:text-3xl lg:text-4xl"
+                  onClick={() => router.push("/menu")}
                 >
                   Menu
                 </Button>
@@ -193,6 +196,7 @@ export default function HomePage() {
                 <Button
                   variant="link"
                   className="hero-call-btn underline-swipe-right text-2xl md:text-3xl lg:text-4xl"
+                  onClick={() => (window.location.href = "tel:+15093340477")}
                 >
                   Call
                 </Button>
