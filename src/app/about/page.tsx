@@ -118,7 +118,7 @@ export default function AboutPage() {
         className="flex flex-col flex-1 w-full overflow-x-hidden"
       >
         {/* ─── PAGE TITLE ─────────────────────────────────────────────── */}
-        <div className="flex flex-col items-center pt-28 sm:pt-36 md:pt-44 pb-16 sm:pb-20 px-4 text-center">
+        <div className="flex flex-col items-center pt-24 sm:pt-28 md:pt-36 pb-12 sm:pb-16 px-4 text-center">
           <h1 className="about-title text-[56px] sm:text-[72px] md:text-[96px] lg:text-[120px] leading-none tracking-[.35em] sm:tracking-[.45em] text-primary">
             OUR STORY
           </h1>

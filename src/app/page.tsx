@@ -22,7 +22,6 @@ export default function HomePage() {
 
   useGSAP(
     () => {
-      // ── Helper: fade + slide up, fires once ──────────────────────────
       const fadeUp = (
         target: gsap.TweenTarget,
         trigger: Element | string,
@@ -163,15 +162,17 @@ export default function HomePage() {
         className="flex flex-col flex-1 w-full overflow-x-hidden"
       >
         {/* ─── HERO ────────────────────────────────────────────────────────── */}
-        <div className="flex flex-col min-h-screen items-center justify-between px-4 mb-8">
-          <div
-            className="flex flex-col items-center justify-center space-y-6 flex-1
-             tracking-[.5em] md:tracking-[.75em] text-center"
-          >
-            <h1 className="hero-title-en text-[86px] leading-none lg:text-9xl text-primary">
+        {/*
+          Use py instead of min-h-screen + justify-between so content doesn't
+          get crushed on short screens. Fixed padding top accounts for the
+          fixed header (~56px). Bottom padding gives room before body sections.
+        */}
+        <div className="flex flex-col items-center px-4 pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-36 md:pb-20">
+          <div className="flex flex-col items-center tracking-[.5em] md:tracking-[.75em] text-center">
+            <h1 className="hero-title-en text-[72px] sm:text-[86px] lg:text-9xl leading-none text-primary">
               THAI GINGER
             </h1>
-            <h1 className="hero-title-th text-6xl md:text-7xl lg:text-8xl font-thai text-primary">
+            <h1 className="hero-title-th mt-3 sm:mt-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-thai text-primary">
               ขิงไทย
             </h1>
             <Image
@@ -179,7 +180,7 @@ export default function HomePage() {
               alt="Ginger Root"
               width={400}
               height={400}
-              className="hero-image my-[32px] w-[50%] h-auto"
+              className="hero-image mt-8 sm:mt-10 mb-8 sm:mb-10 w-[45%] sm:w-[40%] md:w-[35%] max-w-[320px] h-auto"
             />
             <div className="flex flex-row w-[100%] justify-between xs:justify-around sm:justify-between gap-0 mt-6">
               <div ref={menuButtonRef}>
@@ -191,7 +192,6 @@ export default function HomePage() {
                   Menu
                 </Button>
               </div>
-
               <div ref={callButtonRef}>
                 <Button
                   variant="link"
@@ -203,7 +203,9 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="hero-hours pb-6 text-center sm:text-xl md:text-2xl tracking-widest">
+
+          {/* Hours — sits below buttons with consistent gap */}
+          <div className="hero-hours mt-10 sm:mt-12 text-center sm:text-xl md:text-2xl tracking-widest">
             <h3>Tuesday - Sunday</h3>
             <h3>11AM - 9PM</h3>
           </div>
@@ -212,7 +214,11 @@ export default function HomePage() {
         {/* ─── BODY ────────────────────────────────────────────────────────── */}
         <div className="flex flex-col items-center">
           {/* ── Section 1: Exterior photo + overlapping banners ── */}
-          <section className="relative w-full flex justify-center pt-24 sm:pt-16 md:pt-24 lg:pt-32 pb-24 sm:pb-16 md:pb-24 lg:pb-32 px-8 overflow-x-clip">
+          {/*
+            The absolute banners overflow by ~64px top and bottom.
+            pt/pb must be large enough to give them room — keep at lg values.
+          */}
+          <section className="relative w-full flex justify-center pt-24 sm:pt-20 md:pt-28 lg:pt-32 pb-24 sm:pb-20 md:pb-28 lg:pb-32 px-8 overflow-x-clip">
             <div className="relative w-[90%] max-w-[700px] flex justify-center">
               <div className="s1-photo relative w-[100%] self-center shadow-md">
                 <Image
@@ -222,30 +228,14 @@ export default function HomePage() {
                   height={600}
                   className="w-full h-auto xs:aspect-[16/10] aspect-[16/12] sm:aspect-auto object-cover"
                 />
-
                 {/* Top-left red banner */}
-                <div
-                  className="s1-red-banner absolute -top-16 -left-2 xs:-top-12 sm:-top-[8%] sm:-left-4 md:-top-[14%] md:-left-[12%] lg:-top-[10%] lg:-left-[14%] z-10
-                    bg-[#b84c38] text-white
-                    px-3 py-2 sm:px-5 sm:py-3
-                    text-[11px] md:text-sm
-                    tracking-[.15em] font-semibold leading-relaxed
-                    shadow-sm"
-                >
+                <div className="s1-red-banner absolute -top-16 -left-2 xs:-top-12 sm:-top-[8%] sm:-left-4 md:-top-[14%] md:-left-[12%] lg:-top-[10%] lg:-left-[14%] z-10 bg-[#b84c38] text-white px-3 py-2 sm:px-5 sm:py-3 text-[11px] md:text-sm tracking-[.15em] font-semibold leading-relaxed shadow-sm">
                   FROM THE ROLLING HILLS OF NORTHERN THAILAND,
                   <br />
                   TO THE ROLLING WHEAT FIELDS OF PULLMAN
                 </div>
-
                 {/* Bottom-right tan banner */}
-                <div
-                  className="s1-tan-banner absolute -bottom-10 -right-2 xs:-bottom-12 sm:-bottom-[8%] sm:-right-4 md:-bottom-[14%] md:-right-[12%] lg:-bottom-[10%] lg:-right-[14%] z-10
-                    bg-[#c9a055] text-white
-                    px-3 py-2 sm:px-5 sm:py-3
-                    text-[11px] md:text-sm
-                    tracking-[.15em] font-semibold leading-relaxed
-                    text-right shadow-sm"
-                >
+                <div className="s1-tan-banner absolute -bottom-10 -right-2 xs:-bottom-12 sm:-bottom-[8%] sm:-right-4 md:-bottom-[14%] md:-right-[12%] lg:-bottom-[10%] lg:-right-[14%] z-10 bg-[#c9a055] text-white px-3 py-2 sm:px-5 sm:py-3 text-[11px] md:text-sm tracking-[.15em] font-semibold leading-relaxed text-right shadow-sm">
                   FOR 11+ YEARS THAI GINGER BRINGS
                   <br />
                   AUTHENTIC THAI CUISINE TO THE PALOUSE
@@ -255,9 +245,12 @@ export default function HomePage() {
           </section>
 
           {/* ── Section 2: Kitchen + Buddha collage ── */}
-          <section className="relative w-full flex justify-center pt-12 sm:pt-30 md:pt-24 lg:pt-32 pb-18 sm:pb-16 md:pb-24 lg:pb-32 overflow-x-clip">
+          {/*
+            The Buddha is absolutely positioned -top-[35%] above the kitchen photo.
+            pt must absorb that overhang — keep generous.
+          */}
+          <section className="relative w-full flex justify-center pt-16 sm:pt-28 md:pt-28 lg:pt-36 pb-16 sm:pb-20 md:pb-28 lg:pb-32 overflow-x-clip">
             <div className="relative w-[66%] sm:w-[60%] md:w-[45%] max-w-[500px]">
-              {/* Kitchen photo */}
               <div className="s2-kitchen relative w-full aspect-[9/6] xs:aspect-[16/9] overflow-hidden shadow-md z-10">
                 <Image
                   src="/HomePictures/cooking.png"
@@ -266,8 +259,6 @@ export default function HomePage() {
                   className="object-cover"
                 />
               </div>
-
-              {/* Buddha photo */}
               <div className="s2-buddha absolute -top-[35%] -right-[14%] xs:-top-[25%] sm:-top-[35%] sm:-right-[12%] md:-top-[40%] md:-right-[15%] w-[38%] xs:w-[30%] sm:w-[32%] md:w-[35%] aspect-[2/3] xs:aspect-[3/5] overflow-hidden shadow-xl z-20">
                 <Image
                   src="/HomePictures/buddah.png"
@@ -280,9 +271,12 @@ export default function HomePage() {
           </section>
 
           {/* ── Section 3: Phad Kee Mao ── */}
-          <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pr-[6%] pt-16 sm:pt-26 md:pt-24 lg:pt-24 pb-20 sm:pb-16 md:pb-24 lg:pb-32">
+          {/*
+            The plate is absolute -top-16 on mobile, -top-[36%] on md+.
+            pt must clear the plate — keep as-is.
+          */}
+          <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pr-[6%] pt-20 sm:pt-28 md:pt-28 lg:pt-28 pb-20 sm:pb-20 md:pb-28 lg:pb-32">
             <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
-              {/* Plate */}
               <div className="s3-plate z-10 flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] left-0 -translate-x-[45%] sm:-translate-x-[50%] md:-translate-x-[70%] mb-4 sm:mb-0">
                 <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg flex-shrink-0">
                   <Image
@@ -293,8 +287,6 @@ export default function HomePage() {
                   />
                 </div>
               </div>
-
-              {/* Text card */}
               <div className="s3-card bg-[#e8ddd0] px-5 pt-5 pb-4 sm:pl-8 z-0 tracking-widest shadow-sm text-right">
                 <p className="text-[#b84c38] font-bold text-2xl sm:text-3xl md:text-4xl mb-2 tracking-[.2em]">
                   PHAD <br className="block lg:hidden" />
@@ -316,9 +308,8 @@ export default function HomePage() {
           </section>
 
           {/* ── Section 4: Pad Thai ── */}
-          <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pl-[6%] pt-16 sm:pt-26 md:pt-24 lg:pt-20 pb-20 sm:pb-16 md:pb-24 lg:pb-32">
+          <section className="relative w-[70%] sm:w-[80%] flex justify-center sm:pl-[6%] pt-20 sm:pt-28 md:pt-28 lg:pt-24 pb-20 sm:pb-20 md:pb-28 lg:pb-32">
             <div className="relative w-full sm:w-[52%] sm:max-w-[460px]">
-              {/* Plate */}
               <div className="s4-plate z-10 flex justify-center sm:block absolute -top-16 sm:-top-20 md:-top-[36%] right-0 translate-x-[45%] sm:translate-x-[50%] md:translate-x-[70%] mb-4 sm:mb-0">
                 <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-52 md:h-52 rounded-full overflow-hidden shadow-lg flex-shrink-0">
                   <Image
@@ -329,8 +320,6 @@ export default function HomePage() {
                   />
                 </div>
               </div>
-
-              {/* Text card */}
               <div className="s4-card bg-[#b84c38] px-5 pt-5 pb-4 sm:pr-8 z-0 tracking-widest shadow-sm">
                 <p className="text-white font-bold text-2xl sm:text-3xl md:text-4xl mb-2 tracking-[.2em]">
                   PAD THAI
@@ -351,7 +340,7 @@ export default function HomePage() {
           </section>
 
           {/* ── Section 5: Map ── */}
-          <section className="w-full flex justify-center pt-16 sm:pt-16 md:pt-24 lg:pt-18 pb-32 sm:pb-24 md:pb-32 lg:pb-40">
+          <section className="w-full flex justify-center pt-16 sm:pt-20 md:pt-24 lg:pt-20 pb-32 sm:pb-28 md:pb-36 lg:pb-40">
             <div className="s5-map relative w-[52%] max-w-[460px] aspect-[4/3] overflow-hidden shadow-md">
               <Image
                 src="/HomePictures/cooking.png"
