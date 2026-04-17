@@ -167,45 +167,58 @@ export default function HomePage() {
           get crushed on short screens. Fixed padding top accounts for the
           fixed header (~56px). Bottom padding gives room before body sections.
         */}
-        <div className="flex flex-col items-center px-4 pt-24 pb-12 sm:pt-28 sm:pb-16 md:pt-36 md:pb-20">
-          <div className="flex flex-col items-center tracking-[.5em] md:tracking-[.75em] text-center">
-            <h1 className="hero-title-en text-[72px] sm:text-[86px] lg:text-9xl leading-none text-primary">
-              THAI GINGER
-            </h1>
-            <h1 className="hero-title-th mt-3 sm:mt-4 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-thai text-primary">
-              ขิงไทย
-            </h1>
-            <Image
-              src={gingerRoot}
-              alt="Ginger Root"
-              width={400}
-              height={400}
-              className="hero-image mt-8 sm:mt-10 mb-8 sm:mb-10 w-[45%] sm:w-[40%] md:w-[35%] max-w-[320px] h-auto"
-            />
-            <div className="flex flex-row w-[100%] justify-between xs:justify-around sm:justify-between gap-0 mt-6">
-              <div ref={menuButtonRef}>
-                <Button
-                  variant="link"
-                  className="hero-menu-btn text-2xl md:text-3xl lg:text-4xl"
-                  onClick={() => router.push("/menu")}
-                >
-                  Menu
-                </Button>
-              </div>
-              <div ref={callButtonRef}>
-                <Button
-                  variant="link"
-                  className="hero-call-btn underline-swipe-right text-2xl md:text-3xl lg:text-4xl"
-                  onClick={() => (window.location.href = "tel:+15093340477")}
-                >
-                  Call
-                </Button>
+        <div className="flex flex-col items-center justify-between min-h-screen px-4 pt-16 pb-8 sm:pt-20 sm:pb-10">
+          {/* Center content */}
+          <div className="flex flex-col items-center justify-center flex-1 text-center w-full">
+            <div className="flex flex-col items-center tracking-[.5em] md:tracking-[.75em] ">
+              <h1
+                className="hero-title-en leading-none text-primary"
+                style={{ fontSize: "clamp(2.8rem, 10vw, 7rem)" }}
+              >
+                THAI GINGER
+              </h1>
+              <h1
+                className="hero-title-th font-thai text-primary mt-2 sm:mt-3"
+                style={{ fontSize: "clamp(2rem, 7vw, 5rem)" }}
+              >
+                ขิงไทย
+              </h1>
+              <Image
+                src={gingerRoot}
+                alt="Ginger Root"
+                width={400}
+                height={400}
+                className="hero-image w-[38%] sm:w-[36%] md:w-[30%] max-w-[280px] h-auto"
+                style={{
+                  marginTop: "clamp(1rem, 3vh, 2.5rem)",
+                  marginBottom: "clamp(1rem, 3vh, 2.5rem)",
+                }}
+              />
+              <div className="flex flex-row w-full justify-between xs:justify-around sm:justify-between gap-0">
+                <div ref={menuButtonRef}>
+                  <Button
+                    variant="link"
+                    className="hero-menu-btn text-2xl md:text-3xl lg:text-4xl"
+                    onClick={() => router.push("/menu")}
+                  >
+                    Menu
+                  </Button>
+                </div>
+                <div ref={callButtonRef}>
+                  <Button
+                    variant="link"
+                    className="hero-call-btn underline-swipe-right text-2xl md:text-3xl lg:text-4xl"
+                    onClick={() => (window.location.href = "tel:+15093340477")}
+                  >
+                    Call
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Hours — sits below buttons with consistent gap */}
-          <div className="hero-hours mt-10 sm:mt-12 text-center sm:text-xl md:text-2xl tracking-widest">
+          {/* Hours pinned to bottom */}
+          <div className="hero-hours pb-2 text-center sm:text-xl md:text-2xl tracking-widest">
             <h3>Tuesday - Sunday</h3>
             <h3>11AM - 9PM</h3>
           </div>
