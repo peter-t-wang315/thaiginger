@@ -144,8 +144,12 @@ Rules:
 
   // 6. Clear existing menu and replace with newly parsed data
   try {
-    // Delete all existing categories (cascades to items)
-    await supabaseAdmin.rpc("truncate_menu");
+    // Delete all existing categories (cascades to items via ON DELETE CASCADE)
+    const { error: deleteError } = await supabaseAdmin
+      .from("menu_categories")
+      .delete()
+      .lte("created_at", new Date().toISOString());
+    if (deleteError) throw new Error(`Clear failed: ${JSON.stringify(deleteError)}`);
 
     // Insert new categories + items
     for (let i = 0; i < parsedMenu.length; i++) {

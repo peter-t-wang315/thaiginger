@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Header from "@/components/Header";
 
 interface ParseResult {
   success: boolean;
@@ -123,7 +124,9 @@ export default function AdminPage() {
   // ── Login screen ───────────────────────────────────────────────────────────
   if (!isLoggedIn) {
     return (
-      <main className="min-h-screen flex items-center justify-center bg-[#faf8f5] px-4">
+      <>
+        <Header />
+        <main className="min-h-screen flex items-center justify-center bg-[#faf8f5] px-4 pt-20">
         <div className="w-full max-w-sm">
           <h1 className="text-center text-3xl tracking-[.35em] text-primary mb-2">
             THAI GINGER
@@ -173,12 +176,16 @@ export default function AdminPage() {
           </form>
         </div>
       </main>
+    </>
     );
   }
 
+
   // ── Admin screen ───────────────────────────────────────────────────────────
   return (
-    <main className="min-h-screen bg-[#faf8f5] px-4 py-16">
+    <>
+      <Header />
+      <main className="min-h-screen bg-[#faf8f5] px-4 pt-24 pb-16">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-2">
           <h1 className="text-3xl tracking-[.35em] text-primary">ADMIN</h1>
@@ -317,5 +324,7 @@ export default function AdminPage() {
         )}
       </div>
     </main>
+    </>
+
   );
 }
