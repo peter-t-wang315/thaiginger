@@ -167,19 +167,19 @@ export default function HomePage() {
           get crushed on short screens. Fixed padding top accounts for the
           fixed header (~56px). Bottom padding gives room before body sections.
         */}
-        <div className="flex flex-col items-center justify-between min-h-screen px-4 pt-16 pb-8 sm:pt-20 sm:pb-10">
+        <div className="flex flex-col items-center justify-between min-h-screen px-4 pt-14 pb-6 sm:pt-16 sm:pb-8">
           {/* Center content */}
           <div className="flex flex-col items-center justify-center flex-1 text-center w-full">
             <div className="flex flex-col items-center tracking-[.5em] md:tracking-[.75em] ">
               <h1
                 className="hero-title-en leading-none text-primary"
-                style={{ fontSize: "clamp(2.8rem, 10vw, 7rem)" }}
+                style={{ fontSize: "min(clamp(3.2rem, 13vw, 10rem), 16vh)" }}
               >
                 THAI GINGER
               </h1>
               <h1
                 className="hero-title-th font-thai text-primary mt-2 sm:mt-3"
-                style={{ fontSize: "clamp(2rem, 7vw, 5rem)" }}
+                style={{ fontSize: "min(clamp(2.3rem, 9vw, 7rem), 12vh)" }}
               >
                 ขิงไทย
               </h1>
@@ -188,10 +188,11 @@ export default function HomePage() {
                 alt="Ginger Root"
                 width={400}
                 height={400}
-                className="hero-image w-[38%] sm:w-[36%] md:w-[30%] max-w-[280px] h-auto"
+                className="hero-image w-[45%] sm:w-[42%] md:w-[36%] h-auto"
                 style={{
-                  marginTop: "clamp(1rem, 3vh, 2.5rem)",
-                  marginBottom: "clamp(1rem, 3vh, 2.5rem)",
+                  maxWidth: "min(380px, 26vh)",
+                  marginTop: "clamp(0.75rem, 2.5vh, 2rem)",
+                  marginBottom: "clamp(0.75rem, 2.5vh, 2rem)",
                 }}
               />
               <div className="flex flex-row w-full justify-between xs:justify-around sm:justify-between gap-0">

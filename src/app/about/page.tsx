@@ -33,7 +33,7 @@ export default function AboutPage() {
           ...overrides,
         });
 
-      // ── PAGE TITLE: animate in on mount ──────────────────────────────
+      // ── PAGE TITLE + PHOTOS: animate in on mount ─────────────────────
       const titleTl = gsap.timeline({ defaults: { ease: "power3.out" } });
       titleTl
         .from(".about-title", { opacity: 0, y: -32, duration: 0.7 })
@@ -42,37 +42,13 @@ export default function AboutPage() {
           ".about-divider-top",
           { opacity: 0, scaleX: 0, duration: 0.5, transformOrigin: "center" },
           "-=0.2",
-        );
-
-      // ── PHOTO ROW 1: three photos ─────────────────────────────────────
-      const row1 = document.querySelector(".a-row1") as Element;
-      gsap.from(".a-photo-1", {
-        opacity: 0,
-        x: -40,
-        duration: 0.75,
-        ease: "power3.out",
-        scrollTrigger: { trigger: row1, start: "top 88%", once: true },
-        delay: 0.1,
-      });
-      gsap.from(".a-photo-2", {
-        opacity: 0,
-        y: 30,
-        duration: 0.75,
-        ease: "power3.out",
-        scrollTrigger: { trigger: row1, start: "top 88%", once: true },
-        delay: 0.25,
-      });
-      gsap.from(".a-photo-3", {
-        opacity: 0,
-        x: 40,
-        duration: 0.75,
-        ease: "power3.out",
-        scrollTrigger: { trigger: row1, start: "top 88%", once: true },
-        delay: 0.4,
-      });
+        )
+        .from(".a-photo-1", { opacity: 0, x: -40, duration: 0.75 }, "-=0.1")
+        .from(".a-photo-2", { opacity: 0, y: 30, duration: 0.75 }, "-=0.65")
+        .from(".a-photo-3", { opacity: 0, x: 40, duration: 0.75 }, "-=0.65")
+        .from(".about-intro", { opacity: 0, y: 16, duration: 0.5 }, "-=0.4");
 
       // ── TEXT BLOCKS ───────────────────────────────────────────────────
-      fadeUp(".a-text-1", ".a-text-1");
       fadeUp(".a-text-2", ".a-text-2");
       fadeUp(".a-text-3", ".a-text-3");
 
@@ -117,63 +93,65 @@ export default function AboutPage() {
         ref={containerRef}
         className="flex flex-col flex-1 w-full overflow-x-hidden"
       >
-        {/* ─── PAGE TITLE ─────────────────────────────────────────────── */}
-        <div className="flex flex-col items-center pt-24 sm:pt-28 md:pt-36 pb-12 sm:pb-16 px-4 text-center">
-          <h1 className="about-title text-[56px] sm:text-[72px] md:text-[96px] lg:text-[120px] leading-none tracking-[.35em] sm:tracking-[.45em] text-primary">
+        {/* ─── HERO ───────────────────────────────────────────────────── */}
+        {/* ── Title block ── */}
+        <div className="flex flex-col items-center text-center px-4 pt-24 pb-20 sm:pt-20 sm:pb-28 md:pb-32 tracking-[.35em] sm:tracking-[.45em] gap-8 sm:gap-10">
+          <h1
+            className="about-title leading-none text-primary"
+            style={{ fontSize: "min(clamp(3.5rem, 13vw, 10rem), 16vh)" }}
+          >
             OUR STORY
           </h1>
-          <p className="about-subtitle mt-8 sm:mt-10 md:mt-12 text-xl sm:text-2xl md:text-3xl tracking-[.25em] sm:tracking-[.35em] text-secondary font-thai">
+          <p
+            className="about-subtitle font-thai text-secondary tracking-[.25em] sm:tracking-[.35em]"
+            style={{ fontSize: "min(clamp(1.5rem, 5vw, 3.5rem), 10vh)" }}
+          >
             ขิงไทย — Thai Ginger
           </p>
-          <div className="about-divider-top mt-10 sm:mt-14 w-16 h-[2px] bg-secondary opacity-60" />
+          <div className="about-divider-top w-16 h-[2px] bg-secondary opacity-60" />
         </div>
+
+        {/* ── Photos ── */}
+        <section className="w-full flex justify-center items-center gap-4 sm:gap-6 px-6 sm:px-10 pb-20 sm:pb-28 md:pb-32 flex-wrap sm:flex-nowrap">
+          <div className="a-photo-1 relative w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg flex-shrink-0">
+            <Image
+              src="/HomePictures/buddah.png"
+              alt="Thai decor"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="a-photo-2 relative w-full sm:w-[280px] md:w-[380px] lg:w-[460px] h-32 sm:h-44 md:h-52 overflow-hidden shadow-md flex-shrink-0">
+            <Image
+              src="/HomePictures/thaiGingerOutside.png"
+              alt="Thai Ginger restaurant exterior"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="a-photo-3 relative w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg flex-shrink-0">
+            <Image
+              src="/HomePictures/cooking.png"
+              alt="Cooking in the kitchen"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </section>
+
+        {/* ── Intro paragraph ── */}
+        <section className="about-intro w-full flex justify-center px-8 sm:px-12 pb-16 sm:pb-20 md:pb-24">
+          <p className="max-w-[600px] text-center text-base sm:text-lg md:text-xl leading-loose tracking-widest uppercase text-[#5a4030]">
+            Born from a love of Northern Thai cooking and a desire to share it
+            with the Palouse, Thai Ginger opened its doors over 11 years ago.
+            What started as a small family dream became a beloved cornerstone of
+            the Pullman community — one bowl of Pad Thai at a time.
+          </p>
+        </section>
 
         {/* ─── BODY ───────────────────────────────────────────────────── */}
         <div className="flex flex-col items-center">
-          {/* ── Photo Row 1: circle + wide + circle ── */}
-          <section className="a-row1 w-full flex justify-center items-center gap-4 sm:gap-6 px-6 sm:px-10 pb-20 sm:pb-28 md:pb-32 flex-wrap sm:flex-nowrap">
-            {/* Photo 1 — circle */}
-            <div className="a-photo-1 relative w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-lg flex-shrink-0">
-              <Image
-                src="/HomePictures/buddah.png"
-                alt="Thai decor"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            {/* Photo 2 — wide center */}
-            <div className="a-photo-2 relative w-full sm:w-[320px] md:w-[440px] lg:w-[520px] h-48 sm:h-64 md:h-72 overflow-hidden shadow-md flex-shrink-0">
-              <Image
-                src="/HomePictures/thaiGingerOutside.png"
-                alt="Thai Ginger restaurant exterior"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            {/* Photo 3 — circle */}
-            <div className="a-photo-3 relative w-28 h-28 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-lg flex-shrink-0">
-              <Image
-                src="/HomePictures/cooking.png"
-                alt="Cooking in the kitchen"
-                fill
-                className="object-cover"
-              />
-            </div>
-          </section>
-
-          {/* ── Text 1 ── */}
-          <section className="a-text-1 w-full flex justify-center px-8 sm:px-12 pt-2 pb-20 sm:pb-28 md:pb-32">
-            <p className="max-w-[600px] text-center text-base sm:text-lg md:text-xl leading-loose tracking-widest uppercase text-[#5a4030]">
-              Born from a love of Northern Thai cooking and a desire to share it
-              with the Palouse, Thai Ginger opened its doors over 11 years ago.
-              What started as a small family dream became a beloved cornerstone
-              of the Pullman community — one bowl of Pad Thai at a time.
-            </p>
-          </section>
-
-          <div className="w-16 h-[2px] bg-secondary opacity-50 mb-20 sm:mb-28 md:mb-32" />
+          <div className="w-16 h-[2px] bg-secondary opacity-50 mb-16 sm:mb-20 md:mb-24" />
 
           {/* ── Photo Collage: banner + photo 4 left, photo 5 tall right ── */}
           <section className="a-collage relative w-full flex justify-center px-6 sm:px-10 pb-20 sm:pb-28 md:pb-32 overflow-x-clip">
@@ -209,7 +187,7 @@ export default function AboutPage() {
           </section>
 
           {/* ── Text 2 ── */}
-          <section className="a-text-2 w-full flex justify-center px-8 sm:px-12 pt-2 pb-20 sm:pb-28 md:pb-32">
+          <section className="a-text-2 w-full flex justify-center px-8 sm:px-12 pt-2 pb-16 sm:pb-20 md:pb-24">
             <p className="max-w-[600px] text-center text-base sm:text-lg md:text-xl leading-loose tracking-widest uppercase text-[#5a4030]">
               Every dish on our menu carries the flavors of home — fragrant
               lemongrass, toasted galangal, fresh Thai basil, and chilies picked
@@ -218,7 +196,7 @@ export default function AboutPage() {
             </p>
           </section>
 
-          <div className="w-16 h-[2px] bg-secondary opacity-50 mb-20 sm:mb-28 md:mb-32" />
+          <div className="w-16 h-[2px] bg-secondary opacity-50 mb-16 sm:mb-20 md:mb-24" />
 
           {/* ── Text 3 ── */}
           <section className="a-text-3 w-full flex flex-col items-center px-8 sm:px-12 pt-2 pb-20 sm:pb-28 md:pb-32 gap-6 sm:gap-8">
