@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Antonio:wght@100..700");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -22,7 +21,7 @@
   --color-secondary-light: var(--secondary-light);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Antonio", sans-serif;
+  --font-sans: var(--font-antonio), sans-serif;
   --font-thai: var(--font-thai);
   --font-herculanum: "Herculanum", serif;
   --color-sidebar-ring: var(--sidebar-ring);
