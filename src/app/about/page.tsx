@@ -115,10 +115,10 @@ export default function AboutPage() {
         <section className="w-full flex justify-center items-center gap-4 sm:gap-6 px-6 sm:px-10 pb-20 sm:pb-28 md:pb-32 flex-wrap sm:flex-nowrap">
           <div className="a-photo-1 relative w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 rounded-full overflow-hidden shadow-lg flex-shrink-0">
             <Image
-              src="/HomePictures/buddah.png"
-              alt="Thai decor"
+              src="/HomePictures/newbuddha.jpg"
+              alt="Standing Buddha statue"
               fill
-              className="object-cover"
+              className="object-cover object-top"
             />
           </div>
           <div className="a-photo-2 relative w-full sm:w-[280px] md:w-[380px] lg:w-[460px] h-32 sm:h-44 md:h-52 overflow-hidden shadow-md flex-shrink-0">
