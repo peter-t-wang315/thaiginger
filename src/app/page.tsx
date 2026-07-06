@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import gingerRoot from "../../public/temp-ginger-root.png";
+import thaiGingerLogo from "../../public/thaigingerlogo.png";
 import { useGSAP } from "@gsap/react";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
 import Header from "@/components/Header";
@@ -184,8 +184,8 @@ export default function HomePage() {
                 ขิงไทย
               </h1>
               <Image
-                src={gingerRoot}
-                alt="Ginger Root"
+                src={thaiGingerLogo}
+                alt="Thai Ginger logo — ginger, Thai basil, lemongrass, and chilies"
                 width={400}
                 height={400}
                 className="hero-image w-[45%] sm:w-[42%] md:w-[36%] h-auto"
@@ -275,10 +275,10 @@ export default function HomePage() {
               </div>
               <div className="s2-buddha absolute -top-[35%] -right-[14%] xs:-top-[25%] sm:-top-[35%] sm:-right-[12%] md:-top-[40%] md:-right-[15%] w-[38%] xs:w-[30%] sm:w-[32%] md:w-[35%] aspect-[2/3] xs:aspect-[3/5] overflow-hidden shadow-xl z-20">
                 <Image
-                  src="/HomePictures/buddah.png"
-                  alt="Thai Decor"
+                  src="/HomePictures/newbuddha.jpg"
+                  alt="Standing Buddha statue"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                 />
               </div>
             </div>
@@ -354,15 +354,25 @@ export default function HomePage() {
           </section>
 
           {/* ── Section 5: Map ── */}
-          <section className="w-full flex justify-center pt-16 sm:pt-20 md:pt-24 lg:pt-20 pb-32 sm:pb-28 md:pb-36 lg:pb-40">
-            <div className="s5-map relative w-[52%] max-w-[460px] aspect-[4/3] overflow-hidden shadow-md">
-              <Image
-                src="/HomePictures/cooking.png"
-                alt="Thai Ginger Location Map"
-                fill
-                className="object-cover"
+          <section className="w-full flex flex-col items-center pt-16 sm:pt-20 md:pt-24 lg:pt-20 pb-32 sm:pb-28 md:pb-36 lg:pb-40">
+            <div className="s5-map relative w-[85%] sm:w-[65%] max-w-[560px] aspect-[4/3] overflow-hidden shadow-md">
+              <iframe
+                src="https://www.google.com/maps?q=Thai+Ginger,+300+S+Grand+Ave,+Pullman,+WA+99163&output=embed"
+                className="absolute inset-0 w-full h-full border-0"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Thai Ginger — 300 S Grand Ave, Pullman, WA 99163"
               />
             </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Thai+Ginger+300+S+Grand+Ave+Pullman+WA+99163"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 text-xs sm:text-sm md:text-base tracking-[.2em] text-primary underline-offset-4 hover:underline"
+            >
+              300 S GRAND AVE, PULLMAN, WA 99163
+            </a>
           </section>
         </div>
       </main>
